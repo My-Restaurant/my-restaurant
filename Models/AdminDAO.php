@@ -1,7 +1,6 @@
 <?php 
 
     require_once "Sql.php";
-    require_once "Admin.php";
 
     class AdminDAO{
 
@@ -35,8 +34,21 @@
 
         }
      
-        // public function store($data = new Admin()){
-        // }
+        public function getByEmail($email){
+
+            $sql = new Sql("102030");
+
+            $result = $sql->select("SELECT * FROM tb_users WHERE email = :email", [
+                ":email"=> $email 
+            ]);
+
+            if(count($result) > 0){
+                return $result[0];
+            } else {
+                return false;
+            }
+
+        }
 
     }
 
