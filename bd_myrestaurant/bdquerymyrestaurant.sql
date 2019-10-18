@@ -1,4 +1,4 @@
-CREATE DATABASE db_myRestaurant;
+CREATE OR REPLACE DATABASE db_myRestaurant;
 
 USE db_myRestaurant;
 
@@ -68,3 +68,4 @@ CREATE TABLE tb_orderItems(
     FOREIGN KEY (idOrder) REFERENCES tb_orders (idOrder),
     FOREIGN KEY (idProduct) REFERENCES tb_products (idProduct) 
 );
+
