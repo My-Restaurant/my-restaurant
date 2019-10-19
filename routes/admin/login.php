@@ -28,9 +28,7 @@
                 echo Utils::toJSON($_SESSION["userData"]);
 
             } else {
-
                 echo Utils::toJSON(["response"=> false, "message"=> "Senha incorreta"]);
-
             }
 
         }

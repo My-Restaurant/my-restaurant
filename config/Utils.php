@@ -29,8 +29,8 @@
             session_start();
         }
 
-        public static function destroySess(){
-            session_destroy();
+        public static function destroySess($session){
+            unset($_SESSION["userData"]);
         }
 
     }
