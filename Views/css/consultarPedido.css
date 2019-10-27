@@ -1,0 +1,32 @@
+.btn-large{
+    padding: 80px;
+}
+
+/* Extra small devices (phones, 576px and down) */
+@media only screen and (max-width: 576px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 576px and down) */
+@media only screen and (max-width: 576px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px) {
+    .btn-large{
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px) {}
+
+
+
