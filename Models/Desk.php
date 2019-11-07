@@ -5,7 +5,7 @@ class Desk{
     private $idDesk;
     private $descriptive;
 
-    function __construct($id, $des){
+    function __construct($id = null, $des = null){
 
         $this->idDesk = $id;
         $this->descriptive = $des;
@@ -13,12 +13,12 @@ class Desk{
     }
 
     //gets
-    function getIdTable(){return $this->idDesk;}
-    function getDesTable(){return $this->descriptive;}
+    function getIdDesk(){return $this->idDesk;}
+    function getDescriptive(){return $this->descriptive;}
 
     //sets
-    function setIdTable($id){$this->idDesk = $id;}
-    function setDesTable($des){$this->descriptive = $des;}
+    function setIdDesk($id){$this->idDesk = $id;}
+    function setDescriptive($des){$this->descriptive = $des;}
 
 }
 

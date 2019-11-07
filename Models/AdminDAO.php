@@ -21,7 +21,9 @@
         public function insert($admin){
 
             $sql = new Sql();
-            $sql->query("INSERT INTO tb_users (username, cpf, usertype, email, passwd) values(:name, :cpf, :type, :email, :passwd)", [
+            $sql->query("INSERT INTO tb_users (username, cpf, usertype, email, passwd) 
+            values(:name, :cpf, :type, :email, :passwd)", 
+            [
                 ":name"=> $admin->getUsername(),
                 ":cpf"=> $admin->getCpf(),
                 ":type"=> $admin->getUsertype(),
