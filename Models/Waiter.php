@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "User.php";
 
 class Waiter extends User{
@@ -24,11 +23,5 @@ class Waiter extends User{
     function setCommission($commission){$this->commission = $commission;}
 
 }
-
-
-
-
-
-
 
 ?>

@@ -42,6 +42,38 @@
             return true;
         }
 
+        public function login($waiter){
+
+            $sql = new Sql();
+            $result = $sql->select("SELECT * FROM tb_waiters w
+            INNER JOIN tb_users u USING(idUser)
+            WHERE u.email = :email", [
+                ":email"=> $waiter->getEmail()
+            ]);
+            $sql->close();
+            
+            if(count($result) > 0){
+                //compara a senha enviada pelo usuario com o hash do banco de dados
+                if(password_verify($waiter->getPasswd(), $result[0]->passwd)){
+
+                    $_SESSION["userData"] = $result[0];
+
+                    return true;
+
+                } else {
+                    return false;
+                }
+
+            } else {    
+                return false;
+            }
+
+        }
+
+        public function logout(){
+            unset($_SESSION["userData"]);
+        }
+
     }
 
 ?>
