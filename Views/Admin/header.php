@@ -30,13 +30,19 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="anotarPedido.php">Anotar Pedido</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="produtos.php">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="categorias.php">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="status.php">Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mesas.php">Mesas</a>
                         </li>
                 </div>
             </div>
