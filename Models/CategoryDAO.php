@@ -30,7 +30,7 @@ class categoryDAO{
         $result = $sql->select("SELECT descriptive FROM tb_categories WHERE idCategory = :id", 
         [":id" => $category->getIdCategory()]);
         $sql->close();
-        return $result;
+        return $result[0];
 
     }
 

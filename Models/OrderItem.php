@@ -6,17 +6,15 @@ class OrderItem{
     private $quantity;
     private $totalPrice;
     private $observation;
-    private $status;
     private $product;
 
-    function __construct($id, $q, $totalP, $obs, $s, $prod){
+    function __construct($id, $q, $totalP, $obs, $prod){
 
         $this->idOrderItem = $id;
         $this->quantity = $q;
         $this->totalPrice = $totalP;
         $this->observation = $obs;
-        $this->status = $s;
-        $this->product[] = $prod;
+        $this->product = $prod;
     }
 
 
@@ -25,7 +23,6 @@ class OrderItem{
     function getQuantity(){return $this->quantity;}
     function getTotalPrice(){return $this->totalPrice;}
     function getObservation(){return $this->observation;}
-    function getStatus(){return $this->status;}
     function getProduct(){return $this->product;}
 
     //sets
@@ -33,8 +30,7 @@ class OrderItem{
     function setQuantity($q){$this->quantity = $q;}
     function setTotalPrice($totalP){$this->totalPrice = $totalP;}
     function setObservation($obs){$this->observation = $obs;}
-    function setStatus($s){$this->status = $s;}
-    function setProduct($prod){$this->product[] = $prod;}
+    function setProduct($prod){$this->product = $prod;}
 
 }
 
