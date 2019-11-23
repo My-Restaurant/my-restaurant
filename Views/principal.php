@@ -1,3 +1,11 @@
+<?php 
+
+    require_once "../Models/WaiterDAO.php";
+
+    WaiterDAO::verifyLogin();
+
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -38,7 +46,7 @@
                             <a class="nav-link" href="#">Link</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="logout.php">Sair</a>
                         </li>
                 </div>
             </div>
@@ -54,7 +62,7 @@
             </div>
         </div>
 
-        <a href="anotarPedido.html" class="btn btn-primary p-4 mb-2"><i class="fas fa-plus mr-2"></i>Anotar pedido</a>
+        <a href="anotarPedido.php" class="btn btn-primary p-4 mb-2"><i class="fas fa-plus mr-2"></i>Anotar pedido</a>
         <a href="consultarPedido.html" class="btn btn-primary p-4 mb-2"><i class="fas fa-search mr-2"></i>Consultar um pedido</a>
 
 

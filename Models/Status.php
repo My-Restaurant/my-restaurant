@@ -5,7 +5,7 @@ class Status{
     private $idStatus;
     private $descriptive;
 
-    function __construct($id = null, $desc = null){
+    function __construct($id = 1, $desc = null){
 
         $this->idStatus = $id;
         $this->descriptive = $desc;

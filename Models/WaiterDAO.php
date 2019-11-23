@@ -1,5 +1,6 @@
 <?php 
 
+    !isset($_SESSION) ? session_start() : null;
     require_once "Sql.php";
     require_once "Waiter.php";
 
@@ -70,8 +71,16 @@
 
         }
 
-        public function logout(){
+        public static function logout(){
             unset($_SESSION["userData"]);
+        }
+
+        public static function verifyLogin(){
+
+            if (!$_SESSION["userData"] || !isset($_SESSION["userData"])) {
+                header("Location: login.php");
+            }
+
         }
 
     }

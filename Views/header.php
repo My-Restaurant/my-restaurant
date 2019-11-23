@@ -1,3 +1,11 @@
+<?php 
+    
+    !isset($_SESSION) ? session_start() : null;
+    require_once "../Models/WaiterDAO.php";
+    WaiterDAO::verifyLogin();
+
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -36,36 +44,9 @@
                             <a class="nav-link" href="#">Link</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="logout.php">Sair</a>
                         </li>
                 </div>
             </div>
         </nav>
     </header>
-    
-    <main class="py-5">
-        <div class="container">
-            <h1>Anotar Pedido</h1>
-            <hr>
-
-            <form action="" method="">
-                <div class="form-group">
-                    <label for="numMesa">Escolha o número da mesa</label>
-                    <select class="form-control" name="numMesa" id="numMesa">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </main>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-</body>
-
-</html>

@@ -1,6 +1,7 @@
 <?php 
 
     require_once "Sql.php";
+    require_once "Order.php";
 
     class OrderDAO {
 
@@ -8,15 +9,14 @@
             $sql = new Sql();
             try {
 
-                $sql->query("INSERT INTO tb_orders(totalPrice, idDesk, idStatus, idWaiter)
-                VALUES(:total, :desk, :status, :waiter)", [
+                $result = $sql->select("CALL sp_orders_store(:total, :desk, :status, :waiter)", [
                     ":total"=> $order->getTotalPrice(),
-                    ":desk"=> $order->getDesk(),
-                    ":status"=> $order->getStatus(),
-                    ":waiter"=> $order->getWaiter()
+                    ":desk"=> $order->getDesk()->getIdDesk(),
+                    ":status"=> $order->getStatus()->getIdStatus(),
+                    ":waiter"=> (int)$order->getWaiter()->getIdWaiter()
                 ]);
                 $sql->close();
-                return true;
+                return $result[0];
 
             } catch (Exception $e) {
                 die($e->getMessage);
@@ -28,16 +28,28 @@
 
             $sql = new Sql();
             try {
-                $sql->query("INSERT INTO tb_orderItems(quantity, totalPrice, observation, idOrder, idProduct)
-                VALUES(:qtd, :totalPrice, :obs, :order, :prod)", [
-                    ":qtd" => $order->getOrderItem()->getQuantity(),
-                    ":totalPrice" => $order->getOrderItem()->getTotalPrice(),
-                    ":obs" => $order->getOrderItem()->getObservation(),
-                    ":order" => $order->getIdOrder(),
-                    ":prod" => $order->getOrderItem()->getProduct()->getIdProduct()
-                ]);
+                
+                $data = [];
+                for ($i=0; $i < count($order->getOrderItem()); $i++) { 
+                    
+                    if($order->getOrderItem()[$i]->getProduct() !== null){
+
+                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :totalPrice, :obs, :order, :prod)", [
+                            ":qtd" => $order->getOrderItem()[$i]->getQuantity(),
+                            ":totalPrice" => $order->getOrderItem()[$i]->getTotalPrice(),
+                            ":obs" => $order->getOrderItem()[$i]->getObservation(),
+                            ":order" => $order->getIdOrder(),
+                            ":prod" => $order->getOrderItem()[$i]->getProduct()->getIdProduct()
+                        ]); 
+
+                        array_push($data, $result[0]);
+
+                    } 
+
+                }
+                
                 $sql->close();
-                return true;
+                return $data;
             } catch (Exception $e) {
                 die($e->getMessage);
                 return false;

@@ -12,14 +12,14 @@ class Order{
     private $orderItem;
     
 
-    function __construct($id, $total, $w, $desk, $s, $idOrder, $q, $totalP, $obs, $prod){
+    function __construct($id = null, $total = null, $w = null, $desk = null, $s = null, $idOrder = null, $q = null, $totalP = null, $obs = null, $prod = null){
 
         $this->idOrder = $id;
         $this->totalPrice = $total;
         $this->waiter = $w;
         $this->desk = $desk;
         $this->status = $s;
-        $this->orderItem[] = new OrderItem($idOrder, $q, $totalP, $obs, $prod);
+        $this->orderItem[] = new OrderItem($idOrder, $q, $totalP, $obs, $prod, $this->idOrder);
         
     }
 
@@ -36,8 +36,8 @@ class Order{
     function setTotalPrice($totalP){$this->totalPrice = $totalP;}
     function setWaiter($w){$this->waiter = $w;}
     function setStatus($s){$this->status = $s;}
-    function setOrderItem($idOrder, $q, $totalP, $obs, $s, $prod){
-        $this->orderItem[] = new OrderItem($idOrder, $q, $totalP, $obs, $s, $prod);
+    function setOrderItem($id, $q, $totalP, $obs, $prod){
+        $this->orderItem[] = new OrderItem($id, $q, $totalP, $obs, $prod, $this->idOrder);
     }
 }
 

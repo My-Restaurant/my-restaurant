@@ -14,7 +14,7 @@
             $newData = [];
 
             foreach ($data as $key => $value) {
-                if($data[$key] !== null) array_push($newData, $data);
+                if($data[$key] !== null || $data[$key] !== "") array_push($newData, $data);
             }
 
             if(count($newData) === count($data)){

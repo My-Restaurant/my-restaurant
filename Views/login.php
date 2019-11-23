@@ -1,3 +1,11 @@
+<?php 
+
+    require_once "../Models/WaiterDAO.php";
+
+    WaiterDAO::logout();
+
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -18,8 +26,6 @@
 
 <body>
 
-
-
     <div class="content-img">
 
         <div id="logo" class="text-white pt-4 pl-4">
@@ -31,15 +37,15 @@
                 <div class="col-12 col-lg-8 col-xl-8">
                     <div class="bg-white p-5 border-login">
                         <h1 class="text-center">Login</h1>
-                        <form action="" method="">
+                        <form method="POST">
                             <div class="form-group">
                                 <label for="email">E-mail</label>
-                                <input type="text" class="form-control" id="email" placeholder="Insira seu e-mail">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Insira seu e-mail">
                             </div>
 
                             <div class="form-group">
                                 <label for="passwd">Senha</label>
-                                <input type="password" class="form-control" id="passwd" placeholder="Insira sua senha">
+                                <input type="password" name="passwd" class="form-control" id="passwd" placeholder="Insira sua senha">
                             </div>
 
                             <div class="from-group form-check">
@@ -109,3 +115,31 @@
 </body>
 
 </html>
+<?php 
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+        if($_POST["email"] != "" && $_POST["passwd"] != ""){
+
+            $waiter = new Waiter();
+            $waiter->setValues($_POST);
+
+            $waiterDAO = new WaiterDAO();
+
+            if(!$waiterDAO->login($waiter)){
+                echo "
+                    <script>alert('Email ou senha incorretos')</script>
+                ";
+            } else {
+                header("location: principal.php");
+            }
+            
+        } else {
+            echo "
+                <script>alert('Não mano')</script>
+            ";
+        }
+
+    }
+
+?>
