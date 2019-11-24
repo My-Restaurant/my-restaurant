@@ -34,9 +34,8 @@
                     
                     if($order->getOrderItem()[$i]->getProduct() !== null){
 
-                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :totalPrice, :obs, :order, :prod)", [
+                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :obs, :order, :prod)", [
                             ":qtd" => $order->getOrderItem()[$i]->getQuantity(),
-                            ":totalPrice" => $order->getOrderItem()[$i]->getTotalPrice(),
                             ":obs" => $order->getOrderItem()[$i]->getObservation(),
                             ":order" => $order->getIdOrder(),
                             ":prod" => $order->getOrderItem()[$i]->getProduct()->getIdProduct()
@@ -55,6 +54,23 @@
                 return false;
             }
         }
+
+        public function ordersByDesk($desk){
+
+            $sql = new Sql();
+            try {
+                $result = $sql->select("SELECT * FROM tb_orders WHERE idDesk = :id", [
+                    ":id"=> $desk->getIdDesk()
+                ]);
+                $sql->close();
+                return $result;
+            } catch (Exception $e) {
+                die($e->getMessage());
+                return false;
+            }
+
+        }
+
     }
 
 ?>

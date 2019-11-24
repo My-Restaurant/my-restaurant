@@ -51,6 +51,7 @@ CREATE TABLE tb_orders(
     idDesk INT NOT NULL,
     idStatus INT NOT NULL,
     idWaiter INT NOT NULL,
+    dt_register TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (idOrder),
     FOREIGN KEY (idDesk) REFERENCES tb_desk (idDesk),
     FOREIGN KEY (idStatus) REFERENCES tb_status (idStatus),

@@ -70,12 +70,25 @@
         <hr>
 
         <div class="accordion" id="accordionOrders">
+            <?php 
+
+                require_once "../Models/OrderDAO.php";
+                require_once "../Models/DeskDAO.php";
+
+                $deskDAO = new DeskDAO();
+                $orderDAO = new OrderDAO();
+
+                foreach ($deskDAO->allDesks() as $key => $value) {
+                    $desk = new Desk($value->idDesk); 
+                    $orders = $orderDAO->ordersByDesk($desk);
+            ?>
+
             <div class="card">
                 <div class="card-header bg-dark" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link btn-block text-left text-white collapsed" type="button" data-toggle="collapse"
                             data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
-                            Mesa 1
+                            <?=$value->descriptive?>
                         </button>
                     </h2>
                 </div>
@@ -85,81 +98,45 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Pedido</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Horário</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Lasanha a bolonhesa</td>
-                                    <td>Em preparo</td>
-                                    <td>20:35</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Refrigerante</td>
-                                    <td>Entregue</td>
-                                    <td>20:35</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Torta de Limão</td>
-                                    <td>Em preparo</td>
-                                    <td>21:10</td>
-                                </tr>
+                                <?php 
+                                    if(count($orders) > 0){
+                                        foreach ($orders as $key => $value) {
+                                            $dateTime = new DateTime($value->dt_register);
+                                            echo "
+                                                <tr>
+                                                    <td>$value->idOrder</td>
+                                                    <td>Em espera</td>
+                                                    <td>" . $dateTime->format('H:i') . "</td>
+                                                    <td>
+                                                        <a href='itensPedido.php?idOrder=$value->idOrder'>ver itens</a>
+                                                    </td>
+                                                </tr>
+                                            ";
+                                        }
+                                    } else {
+                                        echo "
+                                        <tr>
+                                            <td colspan='3'>Nenhum pedido encontrado</td>
+                                        </tr>";
+                                    }
+                                    
+
+                                ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-header bg-dark" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left text-white collapsed" type="button" data-toggle="collapse"
-                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Mesa 2
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOrders">
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Pedido</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Horário</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Lasanha a bolonhesa</td>
-                                    <td>Em preparo</td>
-                                    <td>20:35</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Refrigerante</td>
-                                    <td>Entregue</td>
-                                    <td>20:35</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Torta de Limão</td>
-                                    <td>Em preparo</td>
-                                    <td>21:10</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
+        <?php
+            }
+            
+        ?>
         </div>
 
     </main>

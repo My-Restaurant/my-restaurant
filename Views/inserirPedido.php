@@ -1,5 +1,9 @@
 <?php require_once "header.php";?>
+<?php 
 
+    !isset($_POST["numMesa"]) ? header("Location: anotarPedido.php") : null; 
+
+?>
 <main class="py-5">
         <div class="container">
             
@@ -17,8 +21,9 @@
 
                     foreach ($ret as $product) {
                         echo "<div class='form-group form-check'>
-                             <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
-                             <label for='$product->idProduct'>$product->pDescriptive</label>
+                            <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
+                            <label for='$product->idProduct'>$product->pDescriptive</label>
+                            <span class='ml-5'>$product->price</span>
                         </div>";
                     }
                     
@@ -34,7 +39,9 @@
 
 <?php 
     
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST["product"])){
+
+        var_dump($_POST);
 
         require_once "../Models/Waiter.php";
         require_once "../Models/Desk.php";
@@ -58,7 +65,7 @@
         if($_POST){
             foreach ($_POST["product"] as $key => $value) {
                 $prod = new Product($value);
-                $order->setOrderItem(null, 1, 10.00, "", $prod); 
+                $order->setOrderItem(null, 1, 0.0, "", $prod); 
             }
 
             $dataItem = $orderDAO->insertItem($order);
