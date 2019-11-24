@@ -71,6 +71,28 @@
 
         }
 
+        public function listOrderItems($order){
+
+            $sql = new Sql();
+            try {
+                $result = $sql->select("
+                    SELECT i.idOrderItem 'idOrderItem', p.descriptive 'product', p.price 'price' , 
+                    c.descriptive 'category', i.totalPrice 'totalPrice', i.quantity 'quantity'
+                    FROM tb_orderItems i
+                    INNER JOIN tb_products p USING(idProduct)
+                    INNER JOIN tb_categories c USING(idCategory)
+                    WHERE idOrder = :id
+                    ORDER BY i.idOrderItem ASC;
+                ", [":id"=> $order->getIdOrder()]);
+                $sql->close();
+                return $result;
+            } catch (Exception $e) {
+                die($e->getMessage());
+                return false;
+            }
+
+        }
+
     }
 
 ?>

@@ -106,13 +106,14 @@
                             <tbody>
                                 <?php 
                                     if(count($orders) > 0){
+                                        //lista os pedidos da mesa
                                         foreach ($orders as $key => $value) {
                                             $dateTime = new DateTime($value->dt_register);
                                             echo "
                                                 <tr>
                                                     <td>$value->idOrder</td>
                                                     <td>Em espera</td>
-                                                    <td>" . $dateTime->format('H:i') . "</td>
+                                                    <td>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
                                                     <td>
                                                         <a href='itensPedido.php?idOrder=$value->idOrder'>ver itens</a>
                                                     </td>
@@ -120,13 +121,12 @@
                                             ";
                                         }
                                     } else {
+                                        //Não há registro de pedidos
                                         echo "
                                         <tr>
                                             <td colspan='3'>Nenhum pedido encontrado</td>
                                         </tr>";
                                     }
-                                    
-
                                 ?>
                             </tbody>
                         </table>
