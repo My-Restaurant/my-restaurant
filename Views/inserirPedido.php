@@ -12,7 +12,7 @@
 
             <form action="#" method="POST">
                 
-                    <label for="numMesa">Selecione os produtos no pedido</label>
+                    <h2>Selecione os produtos no pedido</h2>
                     <?php 
                     
                     require_once "../Models/ProductDAO.php";
@@ -41,8 +41,6 @@
     
     if(isset($_POST["product"])){
 
-        var_dump($_POST);
-
         require_once "../Models/Waiter.php";
         require_once "../Models/Desk.php";
         require_once "../Models/OrderDAO.php";
@@ -60,19 +58,14 @@
         
         $order->setIdOrder($data->idOrder);
 
-        /* Calcular preço */
-
-        if($_POST){
-            foreach ($_POST["product"] as $key => $value) {
-                $prod = new Product($value);
-                $order->setOrderItem(null, 1, 0.0, "", $prod); 
-            }
-
-            $dataItem = $orderDAO->insertItem($order);
-
-            header("Location: principal.php");
-
+        foreach ($_POST["product"] as $key => $value) {
+            $prod = new Product($value);
+            $order->setOrderItem(null, 1, 0.0, "", $prod); 
         }
+
+        $dataItem = $orderDAO->insertItem($order);
+
+        header("Location: principal.php");
 
     }
     
