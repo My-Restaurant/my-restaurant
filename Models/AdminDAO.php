@@ -1,5 +1,7 @@
 <?php 
 
+    !isset($_SESSION) ? session_start() : null;
+    require_once "Admin.php";
     require_once "Sql.php";
 
     class AdminDAO{
@@ -38,7 +40,7 @@
      
         public function getByEmail($email){
 
-            $sql = new Sql("102030");
+            $sql = new Sql();
 
             $result = $sql->select("SELECT * FROM tb_users WHERE email = :email", [
                 ":email"=> $email 

@@ -1,3 +1,10 @@
+<?php 
+
+    require_once "../../Models/UserDAO.php";
+
+    UserDAO::verifyLogin(true);
+
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -43,6 +50,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="mesas.php">Mesas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../logout.php">Sair</a>
                         </li>
                 </div>
             </div>

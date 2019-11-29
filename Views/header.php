@@ -1,8 +1,8 @@
 <?php 
     
     !isset($_SESSION) ? session_start() : null;
-    require_once "../Models/WaiterDAO.php";
-    WaiterDAO::verifyLogin();
+    require_once "../Models/UserDAO.php";
+    UserDAO::verifyLogin();
 
 ?>
 

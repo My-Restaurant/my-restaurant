@@ -1,8 +1,8 @@
 <?php
 
-    require_once "../Models/WaiterDAO.php";
+    require_once "../Models/UserDAO.php";
 
-    WaiterDAO::logout();
+    UserDAO::logout();
     header("Location: login.php");
 
 ?>

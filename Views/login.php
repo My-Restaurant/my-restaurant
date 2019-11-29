@@ -1,8 +1,8 @@
 <?php 
 
-    require_once "../Models/WaiterDAO.php";
+    require_once "../Models/UserDAO.php";
 
-    WaiterDAO::logout();
+    UserDAO::logout();
 
 ?>
 
@@ -121,18 +121,23 @@
 
         if($_POST["email"] != "" && $_POST["passwd"] != ""){
 
-            $waiter = new Waiter();
-            $waiter->setValues($_POST);
+            $user = new User();
+            $user->setValues($_POST);
 
-            $waiterDAO = new WaiterDAO();
+            $userDAO = new UserDAO();
             
-            if(!$waiterDAO->login($waiter)){
+            if(!$userDAO->login($user)){
                 echo "
                     <script>alert('Email ou senha incorretos')</script>
                 ";
             } else {
+
+                $url = "";
+
+                ($_SESSION["userData"]->usertype === "A") ? $url = 'Admin/principal.php' : $url = 'principal.php';
+
                 echo "
-                    <script>window.location.href = 'principal.php' </script>
+                    <script>window.location.href = '$url' </script>
                 ";
             }
             

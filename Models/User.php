@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class User{
+class User{
 
     protected $idUser;
     protected $username;

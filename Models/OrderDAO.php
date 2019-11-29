@@ -58,7 +58,7 @@
 
             $sql = new Sql();
             try {
-                $result = $sql->select("SELECT * FROM tb_orders WHERE idDesk = :id", [
+                $result = $sql->select("SELECT * FROM tb_orders INNER JOIN tb_status USING(idStatus) WHERE idDesk = :id", [
                     ":id"=> $desk->getIdDesk()
                 ]);
                 $sql->close();

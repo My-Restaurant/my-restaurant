@@ -19,9 +19,9 @@
 
     // var_dump($orderDAO->insertItem($order));
 
-    // echo password_hash("123", PASSWORD_DEFAULT, [
-    //     "cost"=> 12
-    // ]);
+    echo password_hash("321", PASSWORD_DEFAULT, [
+        "cost"=> 12
+    ]);
 
     
 
