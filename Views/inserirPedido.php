@@ -60,7 +60,7 @@
 
         foreach ($_POST["product"] as $key => $value) {
             $prod = new Product($value);
-            $order->setOrderItem(null, 1, 0.0, "", $prod); 
+            $order->setOrderItem(null, 1, 0.0, $prod); 
         }
 
         $dataItem = $orderDAO->insertItem($order);

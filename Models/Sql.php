@@ -6,7 +6,7 @@
 
         const HOST = "127.0.0.1";
         const USER = "root";
-        const PASSWORD = "102030";
+        const PASSWORD = "";
         const DBNAME = "db_myRestaurant;charset=utf8";
 
         function __construct(){

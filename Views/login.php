@@ -125,13 +125,15 @@
             $waiter->setValues($_POST);
 
             $waiterDAO = new WaiterDAO();
-
+            
             if(!$waiterDAO->login($waiter)){
                 echo "
                     <script>alert('Email ou senha incorretos')</script>
                 ";
             } else {
-                header("location: principal.php");
+                echo "
+                    <script>window.location.href = 'principal.php' </script>
+                ";
             }
             
         } else {

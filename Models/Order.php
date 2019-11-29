@@ -13,14 +13,14 @@ class Order{
     private $dt_register;
     
 
-    function __construct($id = null, $total = null, $w = null, $desk = null, $s = null, $idOrder = null, $q = null, $totalP = null, $obs = null, $prod = null, $dt = null){
+    function __construct($idOrder = null, $total = null, $w = null, $desk = null, $s = null, $idOrderItem = null, $q = null, $totalP = null, $prod = null, $dt = null){
 
-        $this->idOrder = $id;
+        $this->idOrder = $idOrder;
         $this->totalPrice = $total;
         $this->waiter = $w;
         $this->desk = $desk;
         $this->status = $s;
-        $this->orderItem[] = new OrderItem($idOrder, $q, $totalP, $obs, $prod, $this->idOrder);
+        $this->orderItem[] = new OrderItem($idOrderItem, $q, $totalP, $prod, $this->idOrder);
         $this->dt_register = $dt;
 
     }
@@ -39,8 +39,8 @@ class Order{
     function setTotalPrice($totalP){$this->totalPrice = $totalP;}
     function setWaiter($w){$this->waiter = $w;}
     function setStatus($s){$this->status = $s;}
-    function setOrderItem($id, $q, $totalP, $obs, $prod){
-        $this->orderItem[] = new OrderItem($id, $q, $totalP, $obs, $prod, $this->idOrder);
+    function setOrderItem($idOrderItem, $q, $totalP, $prod){
+        $this->orderItem[] = new OrderItem($idOrderItem, $q, $totalP, $prod, $this->idOrder);
     }
     function setDtRegister($dt){$this->dt_register = $dt;}
 }

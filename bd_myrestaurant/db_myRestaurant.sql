@@ -33,7 +33,9 @@ CREATE TABLE tb_categories(
 CREATE TABLE tb_waiters(
 	idWaiter INT NOT NULL AUTO_INCREMENT,
     commission INT(2) NOT NULL,
-    PRIMARY KEY (idWaiter)
+    idUser INT NOT NULL,
+    PRIMARY KEY (idWaiter),
+    FOREIGN KEY (idUser) REFERENCES tb_users(idUser)
 );
 
 CREATE TABLE tb_products(
@@ -62,9 +64,8 @@ CREATE TABLE tb_orderItems(
 	idOrderItem INT NOT NULL AUTO_INCREMENT,
     quantity INT(2) NOT NULL,
     totalPrice DECIMAL(8,2) NOT NULL,
-    observation VARCHAR(255) NOT NULL,
-    idOrder INT NOT NULL,
     idProduct INT NOT NULL,
+    idOrder INT NOT NULL,
     PRIMARY KEY (idOrderItem),
     FOREIGN KEY (idOrder) REFERENCES tb_orders (idOrder),
     FOREIGN KEY (idProduct) REFERENCES tb_products (idProduct) 

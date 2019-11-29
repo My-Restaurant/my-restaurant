@@ -1,4 +1,6 @@
-CREATE PROCEDURE `sp_orders_save` (
+DELIMITER//
+DROP PROCEDURE IF EXISTS sp_orders_store //
+CREATE PROCEDURE `sp_orders_store` (
 	IN pTotalPrice FLOAT,
     IN pDesk INT,
     IN pStatus INT,
@@ -12,3 +14,5 @@ BEGIN
     SELECT * FROM tb_orders WHERE idOrder = LAST_INSERT_ID();
     
 END
+//
+DELIMITER ;

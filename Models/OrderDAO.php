@@ -34,9 +34,8 @@
                     
                     if($order->getOrderItem()[$i]->getProduct() !== null){
 
-                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :obs, :order, :prod)", [
+                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :order, :prod)", [
                             ":qtd" => $order->getOrderItem()[$i]->getQuantity(),
-                            ":obs" => $order->getOrderItem()[$i]->getObservation(),
                             ":order" => $order->getIdOrder(),
                             ":prod" => $order->getOrderItem()[$i]->getProduct()->getIdProduct()
                         ]); 
