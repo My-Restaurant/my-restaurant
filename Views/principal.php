@@ -42,13 +42,13 @@
                 </div>
                 <div id="d<?= $value->idDesk?>" class="collapse show" aria-labelledby="<?= $value->descriptive?>" data-parent="#accordionOrders">
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Horário</th>
-                                    <th scope="col">Ações</th>
+                                    <th scope="col" colspan="2">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,10 +63,20 @@
                                                     <td>$value->descriptive</td>
                                                     <td>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
                                                     <td>
-                                                        <a href='itensPedido.php?idOrder=$value->idOrder'>ver itens</a>
-                                                    </td>
-                                                </tr>
-                                            ";
+                                                        <a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-outline-primary'>Ver Itens</a>
+                                                    </td>";
+
+                                                    if($value->idStatus != 2){
+                                                        echo "
+                                                        <td>
+                                                            <a href='excluirPedido.php?idOrder=$value->idOrder' class='btn btn-outline-danger'>Excluir</a>
+                                                        </td>";
+                                                    } else {
+                                                        echo "<td></td>";
+                                                    }
+
+                                                echo "</tr>";
+   
                                         }
                                     } else {
                                         //Não há registro de pedidos

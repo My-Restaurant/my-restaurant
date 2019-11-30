@@ -20,7 +20,6 @@
 
             } catch (Exception $e) {
                 die($e->getMessage);
-                return false;
             }
         }
         
@@ -50,7 +49,6 @@
                 return $data;
             } catch (Exception $e) {
                 die($e->getMessage);
-                return false;
             }
         }
 
@@ -65,7 +63,6 @@
                 return $result;
             } catch (Exception $e) {
                 die($e->getMessage());
-                return false;
             }
 
         }
@@ -87,7 +84,77 @@
                 return $result;
             } catch (Exception $e) {
                 die($e->getMessage());
-                return false;
+            }
+
+        }
+
+        public function finishOrder($order){
+
+            $sql = new Sql();
+            try {
+
+                $result = $sql->query("UPDATE tb_orders SET idStatus = 2 WHERE idOrder = :id", [
+                    ":id"=> $order->getIdOrder()
+                ]);
+        
+                return $result;
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
+        public function deleteOrder($order){
+
+            $sql = new Sql();
+            try {
+
+                $result = $sql->query("DELETE FROM tb_orders WHERE idOrder = :id AND idStatus = 1", [
+                    ':id'=> $order->getIdOrder()
+                ]);
+
+                return $result;
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
+        public function deleteOrderItem($order){
+
+            $sql = new Sql();
+
+            try {
+                
+                $result = $sql->query("DELETE FROM tb_orderItems WHERE idOrderItem = :id", [
+                    ":id"=> $order->getOrderItem()[0]->getIdOrderItem()
+                ]);
+
+                return $result;
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
+        public static function verifyOrders($desk){
+
+            $sql = new Sql();
+            try {
+
+                $result = $sql->select("SELECT idOrder FROM tb_orders WHERE idDesk = :desk AND idStatus = 1", [
+                    ":desk"=> $desk->getIdDesk()
+                ]);   
+
+                (count($result) > 0) ? $ret = $result[0] : $ret = false;
+                $sql->close();
+                return $ret;
+
+            } catch (Exception $e) {
+                die($e->getMessage());
             }
 
         }

@@ -2,6 +2,7 @@
     
     <main class="py-5">
         <div class="container">
+            <a href="principal.php" class="btn btn-outline-primary mb-3">Voltar</a>
             <h1>Anotar Pedido</h1>
             <hr>
 

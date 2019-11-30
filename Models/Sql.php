@@ -6,8 +6,8 @@
 
         const HOST = "127.0.0.1";
         const USER = "root";
-        const PASSWORD = "";
-        const DBNAME = "db_myRestaurant;charset=utf8";
+        const PASSWORD = "102030";
+        const DBNAME = "db_myrestaurant;charset=utf8";
 
         function __construct(){
 
@@ -33,7 +33,7 @@
             try{
                 $stm = $this->conn->prepare($query);
                 $this->bindParams($params, $stm);
-                $stm->execute();
+                return $stm->execute();
             }
             catch(\Exception $e){
                 die($e->getMessage());

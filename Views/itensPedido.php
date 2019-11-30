@@ -2,19 +2,22 @@
     require_once "header.php"; 
     (isset($_GET["idOrder"]) && $_GET["idOrder"] > 0) ? null : header("Location: principal.php");
 
+    $idOrder = $_GET["idOrder"];
+
 ?>
 
 <main>
 <section class="container py-5">
+    <a href="principal.php" class="btn btn-outline-primary mb-3">Voltar</a>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Prato</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Quantidade</th>
                 <th scope="col">Preço unitario</th>
                 <th scope="col">Preço total</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -29,18 +32,24 @@
                 $total += (float)$value->totalPrice;
                 echo "
                     <tr>
-                        <td>$value->idOrderItem</td>
                         <td>$value->product</td>
                         <td>$value->category</td>
                         <td>$value->quantity</td>
                         <td>R$ " . number_format($value->price, 2, ",", ".") . "</td>
                         <td>R$ " . number_format($value->totalPrice, 2, ",", ".") . "</td>
-                    </tr>
                 ";
+                
+                if($_GET["status"] == 1){
+                    echo "<td>
+                            <a href='excluirItemPedido.php?idOrderItem=$value->idOrderItem&idOrder=$idOrder'>excluir</a>
+                        </td>";
+                } else {
+                    echo "<td></td>";
+                }
+
+                echo "</tr>";
             }
-            echo "
-               
-            "
+
         ?>
         </tbody>
 
@@ -51,7 +60,15 @@
             </tr>
         </tfoot>
     </table>
-    <a href="inserirItem.php?idOrder=<?=$_GET['idOrder']?>" class="btn btn-outline-primary">Adicionar Item</a>
+    <?php 
+        if($_GET["status"] != 2){
+    ?>
+    <a href="inserirItem.php?idOrder=<?=$_GET['idOrder']?>" class='btn btn-outline-primary'>Adicionar Item</a>
+    <?php
+        } else {
+            echo "<div class='alert alert-success text-center'><b>Pedido finalizado<b></div>";
+        }
+    ?>
 </section>
 </main>
  

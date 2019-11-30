@@ -15,6 +15,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/consultarPedido.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/812210af5b.js" crossorigin="anonymous"></script>
@@ -36,6 +37,9 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
+                    <li class="nav-item">
+                            <a class="nav-link" href="mesaFinalizar.php">Finalizar Pedido</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="anotarPedido.php">Anotar Pedido</a>
                         </li>

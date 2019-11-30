@@ -1,7 +1,18 @@
 <?php require_once "header.php";?>
 <?php 
 
-    !isset($_POST["numMesa"]) ? header("Location: anotarPedido.php") : null; 
+    if(!isset($_POST["numMesa"]) || $_POST["numMesa"] == 0){
+        echo "<script>alert('Selecione o número da mesa!'); window.location.href = 'anotarPedido.php';</script>";
+    }  
+
+    require_once "../Models/Desk.php";
+    require_once "../Models/OrderDAO.php";
+
+    $desk = new Desk($_POST["numMesa"]);
+
+    if(OrderDAO::verifyOrders($desk) !== false){
+        header("Location: itensPedido.php?idOrder=" . OrderDAO::verifyOrders($desk)->idOrder); 
+    }
 
 ?>
 <main class="py-5">
@@ -42,13 +53,10 @@
     if(isset($_POST["product"])){
 
         require_once "../Models/Waiter.php";
-        require_once "../Models/Desk.php";
-        require_once "../Models/OrderDAO.php";
         require_once "../Models/Status.php";
         require_once "../Models/Product.php";
     
         $waiter = new Waiter($_SESSION["userData"]->idWaiter);
-        $desk = new Desk($_POST["numMesa"]);
         $status = new Status();
     
         $order = new Order(null, 0.0, $waiter, $desk, $status);

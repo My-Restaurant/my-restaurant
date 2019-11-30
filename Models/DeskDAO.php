@@ -47,6 +47,22 @@ class DeskDAO{
         return true;
     }
 
+    public function showDeskWithOpenOrders(){
+        $sql = new Sql();
+        try {
+            
+            $ret = $sql->select("SELECT * FROM tb_desk
+            WHERE idDesk IN (SELECT idDesk FROM tb_orders WHERE idStatus = 1)");
+
+            return $ret;
+            
+
+
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }
 
 
