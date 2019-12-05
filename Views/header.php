@@ -16,6 +16,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/principal.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/812210af5b.js" crossorigin="anonymous"></script>

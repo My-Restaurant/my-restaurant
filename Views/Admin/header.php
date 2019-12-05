@@ -41,9 +41,6 @@
                             <a class="nav-link" href="mesaFinalizar.php">Finalizar Pedido</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="anotarPedido.php">Anotar Pedido</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="produtos.php">Produtos</a>
                         </li>
                         <li class="nav-item">

@@ -26,8 +26,8 @@
                         <td>".$status->descriptive."</td>";
                         echo "<td><a href='statusCRUD.php?oper=a&id={$status->idStatus}'>Alterar</a></td>";
                 ?>
-                        <td><a href = "statusCRUD.php?oper=e&id=<?php echo $status->idStatus;?>" onclick = 
-                        "return confirm('Deseja excluir esta Mesa?')">Excluir</a></td></tr>
+                        <!-- <td><a href = "statusCRUD.php?oper=e&id= <?php //echo $status->idStatus;?>" onclick = 
+                        "return confirm('Deseja excluir esta Mesa?')">Excluir</a></td></tr> -->
 
                 <?php
 

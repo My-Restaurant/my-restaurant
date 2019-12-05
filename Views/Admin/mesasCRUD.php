@@ -60,7 +60,7 @@ if($_POST){
 
 		<div class="form-group">
 			<label>Mesa</label>
-            <input type="text" name="desk" class="form-control" value="<?php if($oper == "a") echo $retDesk[0]->descriptive?>" required>
+            <input type="text" name="desk" class="form-control" value="<?php if($oper == "a") echo $retDesk[0]->descriptive;?>" required>
 		</div>
 
         <input type="submit" value="Salvar" class="btn btn-outline-primary">

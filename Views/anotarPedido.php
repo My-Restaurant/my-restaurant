@@ -2,7 +2,7 @@
     
     <main class="py-5">
         <div class="container">
-            <a href="principal.php" class="btn btn-outline-primary mb-3">Voltar</a>
+            <a href="principal.php" class="btn btn-outline-danger mb-5"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>
             <h1>Anotar Pedido</h1>
             <hr>
 
@@ -27,7 +27,7 @@
                        ?>
                     </select>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Continuar">
+                <input type="submit" class="btn btn-danger btn-b" value="Continuar">
             </form>
         </div>
     </main>

@@ -10,8 +10,8 @@
             </div>
         </div>
 
-        <a href="anotarPedido.php" class="btn btn-primary p-4 mb-2"><i class="fas fa-plus mr-2"></i>Anotar pedido</a>
-        <a href="consultarPedido.html" class="btn btn-primary p-4 mb-2"><i class="fas fa-search mr-2"></i>Consultar um pedido</a>
+        <a href="anotarPedido.php" class="btn btn-b btn-danger p-4 mb-2"><i class="fas fa-plus mr-2"></i>Anotar pedido</a>
+        <a href="consultarPedido.html" class="btn btn-b btn-danger p-4 mb-2"><i class="fas fa-search mr-2"></i>Consultar um pedido</a>
 
 
         <h2 class="mt-5">Pedidos Recentes</h2>
@@ -31,6 +31,7 @@
                     $orders = $orderDAO->ordersByDesk($desk);
             ?>
 
+        
             <div class="card">
                 <div class="card-header bg-dark" id="<?= $value->descriptive?>">
                     <h2 class="mb-0">
@@ -45,10 +46,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Horário</th>
-                                    <th scope="col" colspan="2">Ações</th>
+                                    <th scope="col">Ações</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,20 +60,18 @@
                                             $dateTime = new DateTime($value->dt_register);
                                             echo "
                                                 <tr>
-                                                    <td>$value->idOrder</td>
                                                     <td>$value->descriptive</td>
                                                     <td>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
                                                     <td>
                                                         <a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-outline-primary'>Ver Itens</a>
-                                                    </td>";
+                                                    ";
 
                                                     if($value->idStatus != 2){
-                                                        echo "
-                                                        <td>
-                                                            <a href='excluirPedido.php?idOrder=$value->idOrder' class='btn btn-outline-danger'>Excluir</a>
-                                                        </td>";
+                                                        ?>
+                                                            <a href="excluirPedido.php?idOrder=<?php echo $value->idOrder;?>" class="btn btn-outline-danger"  onclick = "return confirm('Deseja excluir esse pedido?')"><i class='fas fa-times text-danger' style='font-size: 16pt;'></i></a>
+                                                        <?php 
                                                     } else {
-                                                        echo "<td></td>";
+                                                        echo "</td>";
                                                     }
 
                                                 echo "</tr>";

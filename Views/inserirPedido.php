@@ -16,35 +16,44 @@
 
 ?>
 <main class="py-5">
+
+
         <div class="container">
-            
-        <h1>Inserir Itens no Pedido</h1>
-        <hr>
-
+        <a href="principal.php" class="btn btn-outline-danger mb-3"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>            
+        <h4 class="mt-4">Produtos</h4><hr>
             <form action="#" method="POST">
-                
-                    <h2>Selecione os produtos no pedido</h2>
-                    <?php 
-                    
-                    require_once "../Models/ProductDAO.php";
-                    $prodDAO = new ProductDAO();
-                    $ret = $prodDAO->allProducts();
+                    <div class="form-group">
+                        <label for="search"><strong>Pesquisar por Categoria</strong></label>
+                        <select name="search" id="search" class="form-control">
+                            <option value="">FALTA FAZER</option>
+                        </select>
+                    </div>
 
-                    foreach ($ret as $product) {
-                        echo "<div class='form-group form-check'>
-                            <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
-                            <label for='$product->idProduct'>$product->pDescriptive</label>
-                            <span class='ml-5'>$product->price</span>
-                        </div>";
-                    }
+                        <?php 
+                        
+                        require_once "../Models/ProductDAO.php";
+                        $prodDAO = new ProductDAO();
+                        $ret = $prodDAO->allProducts();
+
+                        foreach ($ret as $product) {
+
+                            echo "<div class='custom-control custom-checkbox mb-3'>
+                            <input type='checkbox' class='custom-control-input' id='$product->idProduct' value='$product->idProduct'>
+                            <label class='custom-control-label' for='$product->idProduct'>$product->pDescriptive</label>
+                          </div>";
+                        }
+                        
+                        ?>
+
                     
-                    ?>
+                    
                     <input type="hidden" name="numMesa" value="<?=$_POST['numMesa'];?>">
                 
-                <input type="submit" class="btn btn-primary" value="Continuar">
+                <input type="submit" class="btn btn-danger btn-b" value="Continuar">
             </form>
         </div>
     </main>
+
 
 <?php require_once "footer.php";?>
 

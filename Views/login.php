@@ -26,17 +26,17 @@
 
 <body>
 
-    <div class="content-img">
 
-        <div id="logo" class="text-white pt-4 pl-4">
-            <h2>LOGO</h2>
-        </div>
+        
 
-        <div class="container">
-            <div class="row justify-content-center align-items-center h-100">
+        <div class="container pb-5">
+            <div class="row justify-content-center align-items-center h-30">
+                    <img src="img/logo.png" class="logo" alt="Logo Meu Restaurante">
+            </div>
+            
+            <div class="row justify-content-center h-70">
                 <div class="col-12 col-lg-8 col-xl-8">
-                    <div class="bg-white p-5 border-login">
-                        <h1 class="text-center">Login</h1>
+                        <h1 class="mt-3 mb-5">Login</h1>
                         <form method="POST">
                             <div class="form-group">
                                 <label for="email">E-mail</label>
@@ -53,54 +53,13 @@
                                 <label for="check" class="form-check-label">Lembre-me</label>
                             </div>
 
-                            <input type="submit" class="btn btn-block btn-primary mt-3" value="Entrar">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-lg btn-danger mt-3"><i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <!-- desktop
-    <div class="d-none d-lg-block d-xl-block">
-        <div class="row align-items-center">
-            <div class="col-4">
-                <div class="block-img"></div>
-            </div>
-            <div class="col-8">
-                <div class="px-5">
-                    <h1 class="mb-4">Login</h1>
-                    <form action="" method="" class="">
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="text" class="form-control" id="email" placeholder="Insira seu e-mail">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="passwd">Senha</label>
-                            <input type="password" class="form-control" id="passwd" placeholder="Insira sua senha">
-                        </div>
-
-                        <div class="from-group form-check">
-                            <input type="checkbox" class="form-check-input" id="check">
-                            <label for="check" class="form-check-label">Lembre-me</label>
-                        </div>
-
-                        <input type="submit" class="btn btn-block btn-primary mt-3" value="Entrar">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- mobile -->
-
-
-
-
-
-
 
 
     <!-- Optional JavaScript -->

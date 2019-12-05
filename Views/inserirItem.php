@@ -3,27 +3,29 @@
     (isset($_GET["idOrder"]) && $_GET["idOrder"] > 0) ? null : header("Location: principal.php");    
 ?>
 
-<h1 class="text-center">Inserir items no pedido</h1>
-<div class="container">
-    <form method="POST">
-        <?php 
+    
+    <div class="container">
 
-            require_once "../Models/ProductDAO.php";
+        <h1 class="text-center">Inserir items no pedido</h1>
+        <form method="POST">
+            <?php 
 
-            $prodDAO = new ProductDAO();
+                require_once "../Models/ProductDAO.php";
 
-            foreach ($prodDAO->allProducts() as $key => $product) {
-                echo "<div class='form-group form-check'>
-                        <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
-                        <label for='$product->idProduct'>$product->pDescriptive</label>
-                        <span class='ml-5'>$product->price</span>
-                    </div>";
-            };
+                $prodDAO = new ProductDAO();
 
-        ?>
-        <input type="submit" class="btn btn-primary" value="Adicionar">
-    </form>
-</div>
+                foreach ($prodDAO->allProducts() as $key => $product) {
+                    echo "<div class='form-group form-check'>
+                            <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
+                            <label for='$product->idProduct'>$product->pDescriptive</label>
+                            <span class='ml-5'>$product->price</span>
+                        </div>";
+                };
+
+            ?>
+            <input type="submit" class="btn btn-primary" value="Adicionar">
+        </form>
+    </div>
 
 <?php require_once "footer.php" ?>
 

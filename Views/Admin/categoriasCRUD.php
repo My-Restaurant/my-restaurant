@@ -59,8 +59,7 @@ if($_POST){
 
 		<div class="form-group">
 			<label>Categoria</label>
-            <input type="text" name="category" class="form-control" value="<?php if($oper == "a") 
-            echo $returnCat[0]->descriptive; ?>" required>
+            <input type="text" name="category" class="form-control" value="<?php if($oper == "a") echo $returnCat[0]->descriptive;?>" required>
 		</div>
 
         <input type="submit" value="Salvar" class="btn btn-outline-primary">
