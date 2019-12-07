@@ -9,11 +9,12 @@
             $sql = new Sql();
             try {
 
-                $result = $sql->select("CALL sp_orders_store(:total, :desk, :status, :waiter)", [
+                $result = $sql->select("CALL sp_orders_store(:total, :desk, :status, :waiter, :orderName)", [
                     ":total"=> $order->getTotalPrice(),
                     ":desk"=> $order->getDesk()->getIdDesk(),
                     ":status"=> $order->getStatus()->getIdStatus(),
-                    ":waiter"=> (int)$order->getWaiter()->getIdWaiter()
+                    ":waiter"=> (int)$order->getWaiter()->getIdWaiter(),
+                    ":orderName"=> $order->getOrderName()
                 ]);
                 $sql->close();
                 return $result[0];
@@ -182,6 +183,54 @@
             }
 
         }
+
+        public static function countFinishedOrders(){
+
+            $sql = new Sql();
+
+            try {
+
+                $result = $sql->select("
+                    SELECT COUNT(idOrder) 'total' FROM tb_orders WHERE idStatus = 2
+                ");
+
+                if(count($result) > 0){
+                    return $result[0];
+                } else {
+                    return false;
+                }
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
+        function allFinishedOrders(){
+
+            $sql = new Sql();
+
+            try {
+
+                $result = $sql->select("
+                    SELECT * FROM tb_orders INNER JOIN tb_waiters using(idWaiter) 
+                    INNER JOIN tb_desk using(idDesk)
+                    INNER JOIN tb_users using(idUser)
+                    WHERE idStatus = 2
+                ");
+
+                if(count($result) > 0){
+                    return $result;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+        
 
     }
 

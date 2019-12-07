@@ -46,6 +46,7 @@
                         <table class="table text-center ">
                             <thead>
                                 <tr>
+                                    <th scope="col">Nome</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Horário</th>
                                     <th scope="col">Ações</th>
@@ -60,9 +61,10 @@
                                             $dateTime = new DateTime($value->dt_register);
                                             echo "
                                                 <tr>
-                                                    <td>$value->descriptive</td>
-                                                    <td>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
-                                                    <td>
+                                                    <td class='align-middle'>$value->orderName</td>
+                                                    <td class='align-middle'>$value->descriptive</td>
+                                                    <td class='align-middle'>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
+                                                    <td class='align-middle'>
                                                         <a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-outline-primary'>Ver Itens</a>
                                                     ";
 
@@ -81,7 +83,7 @@
                                         //Não há registro de pedidos
                                         echo "
                                         <tr>
-                                            <td class='alert alert-info' colspan = 4>Nenhum pedido encontrado</td>
+                                            <td class='alert alert-info' colspan=5>Nenhum pedido encontrado</td>
                                         </tr>";
                                     }
                                 ?>

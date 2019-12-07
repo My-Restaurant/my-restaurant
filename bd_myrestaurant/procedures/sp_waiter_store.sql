@@ -9,13 +9,10 @@ CREATE PROCEDURE `sp_waiter_store` (
 BEGIN
 	INSERT INTO tb_users(username, cpf, usertype, email, passwd)
     VALUES (pUsername, pCpf, "W", pEmail, pPasswd);
-    
-    DECLARE idU INT;
-    SET idU = (SELECT idUser FROM tb_users WHERE idUser = LAST_INSERT_ID());
-    
-    INSERT INTO tb_waiters(commission, idUser) VALUES(pCommission, idU);
+	
+	INSERT INTO tb_waiters(commission, idUser)
+    VALUES (pCommission, (SELECT idUser FROM tb_users WHERE idUser = LAST_INSERT_ID()));
     
 END
-    
 //
 DELIMITER ;

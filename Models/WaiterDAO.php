@@ -12,10 +12,23 @@
         }
 
         public function insertWaiter($waiter){
+
             $sql = new Sql();
-            $sql->query(""); //procedure
-            $sql->close();
-            return true;
+
+            try {
+                $result = $sql->select("CALL sp_waiter_store(:nome, :cpf, :email, :pass, :comm)", [
+                    ":nome"=> $waiter->getUsername(),
+                    ":cpf"=> $waiter->getCpf(),
+                    ":email"=> $waiter->getEmail(),
+                    ":pass"=> $waiter->generatePasswdHash($waiter->getPasswd()),
+                    ":comm"=> $waiter->getCommission()
+                ]);
+                $sql->close();
+                return $result;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+            
         }
 
         public function oneWaiter($waiter){

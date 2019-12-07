@@ -11,9 +11,10 @@ class Order{
     private $status;
     private $orderItem;
     private $dt_register;
+    private $orderName;
     
 
-    function __construct($idOrder = null, $total = null, $w = null, $desk = null, $s = null, $idOrderItem = null, $q = null, $totalP = null, $prod = null, $dt = null){
+    function __construct($idOrder = null, $total = null, $w = null, $desk = null, $s = null, $idOrderItem = null, $q = null, $totalP = null, $prod = null, $dt = null, $orderName = null){
 
         $this->idOrder = $idOrder;
         $this->totalPrice = $total;
@@ -22,6 +23,7 @@ class Order{
         $this->status = $s;
         $this->orderItem[] = new OrderItem($idOrderItem, $q, $totalP, $prod, $this->idOrder);
         $this->dt_register = $dt;
+        $this->orderName = $orderName;
 
     }
 
@@ -33,6 +35,7 @@ class Order{
     function getStatus(){return $this->status;}
     function getOrderItem(){return $this->orderItem;}
     function getDtRegister(){return $this->dt_register;}
+    function getOrderName(){return $this->orderName;}
 
     //sets
     function setIdOrder($id){$this->idOrder = $id;}
@@ -43,6 +46,7 @@ class Order{
         $this->orderItem[] = new OrderItem($idOrderItem, $q, $totalP, $prod, $this->idOrder);
     }
     function setDtRegister($dt){$this->dt_register = $dt;}
+    function setOrderName($orderName){$this->orderName = $orderName;}
 }
 
 

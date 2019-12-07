@@ -8,7 +8,7 @@
 <main>
 
     <section class="container py-5">
-        <div class="row my-3">
+        <div class="row mt-3">
             <div class="col-12 col-lg-4">
                 <div class="card text-white bg-success mb-3">
                     <div class="card-header">Pedidos Abertos</div>
@@ -29,7 +29,7 @@
                         <div class="col-5 text-center"><i class="fas fa-users fa-4x"></i></div>                        
                         <div class="col-7">
                             <p>Garçons: <span><?=WaiterDAO::countWaiters()->total?></span></p>
-                            <a href="#" class="btn btn-light">Cadastrar Garçons</a>
+                            <a href="cadastrarGarcom.php" class="btn btn-light">Cadastrar Garçons</a>
                         </div>
                     </div>
                 </div>
@@ -49,6 +49,21 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12 col-lg-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">Histórico</div>
+                    <div class="card-body row align-items-center py-4">
+                        <div class="col-5 text-center"><i class="fas fa-clipboard-list fa-4x"></i></div>                        
+                        <div class="col-7">
+                            <p>Pedidos Finalizados: <span><?=OrderDAO::countFinishedOrders()->total?></span></p>
+                            <a href="pedidosFinalizados.php" class="btn btn-light">Ver pedidos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

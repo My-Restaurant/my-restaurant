@@ -15,6 +15,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/principal.css">
     <link rel="stylesheet" href="../css/consultarPedido.css">
 
     <!-- Font Awesome -->

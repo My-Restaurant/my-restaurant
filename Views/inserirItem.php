@@ -4,10 +4,12 @@
 ?>
 
     
-    <div class="container">
+    <div class="container py-5">
+    <a href="itensPedido.php?idOrder=<?=$_GET['idOrder']?>&status=1" class="btn btn-outline-danger mb-3"><i class="fas fa-arrow-left mr-2 fa-1x"></i>Voltar</a>
+        <h1>Inserir items no pedido</h1>
+        <hr>
 
-        <h1 class="text-center">Inserir items no pedido</h1>
-        <form method="POST">
+        <form method="POST" class="mt-5">
             <?php 
 
                 require_once "../Models/ProductDAO.php";
@@ -15,11 +17,17 @@
                 $prodDAO = new ProductDAO();
 
                 foreach ($prodDAO->allProducts() as $key => $product) {
-                    echo "<div class='form-group form-check'>
-                            <input type='checkbox' id='$product->idProduct' name='product[]' value='$product->idProduct' class='form-check-input'> 
-                            <label for='$product->idProduct'>$product->pDescriptive</label>
-                            <span class='ml-5'>$product->price</span>
-                        </div>";
+                    echo "<div class='form-group row'> 
+                            <div class='col-8'>
+                                <div class='custom-control custom-checkbox mb-3'>
+                                    <input type='checkbox' class='custom-control-input' id='$product->idProduct' name='product[]' value='$product->idProduct'> 
+                                    <label class='custom-control-label' for='$product->idProduct'>$product->pDescriptive</label>
+                                </div>
+                            </div>
+                            <div classs='col-4'>
+                                <span>R$ $product->price</span>
+                            </div>
+                         </div>";
                 };
 
             ?>

@@ -27,6 +27,10 @@
                        ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="order-name">Nome</label>
+                    <input type="text" class="form-control" name="orderName" id="order-name" required>
+                </div>
                 <input type="submit" class="btn btn-danger btn-b" value="Continuar">
             </form>
         </div>
