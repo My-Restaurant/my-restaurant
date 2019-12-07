@@ -43,7 +43,7 @@
                 </div>
                 <div id="d<?= $value->idDesk?>" class="collapse show" aria-labelledby="<?= $value->descriptive?>" data-parent="#accordionOrders">
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table text-center ">
                             <thead>
                                 <tr>
                                     <th scope="col">Status</th>
@@ -68,10 +68,10 @@
 
                                                     if($value->idStatus != 2){
                                                         ?>
-                                                            <a href="excluirPedido.php?idOrder=<?php echo $value->idOrder;?>" class="btn btn-outline-danger"  onclick = "return confirm('Deseja excluir esse pedido?')"><i class='fas fa-times text-danger' style='font-size: 16pt;'></i></a>
+                                                            <a href="excluirPedido.php?idOrder=<?php echo $value->idOrder;?>" class="btn btn-outline-danger"  onclick = "return confirm('Deseja excluir esse pedido?')"><i class='fas fa-times'></i></a>
                                                         <?php 
                                                     } else {
-                                                        echo "</td>";
+                                                        echo "<button class='btn btn-success' disabled><i class='fas fa-check fa-1x'></i></button></td>";
                                                     }
 
                                                 echo "</tr>";
@@ -81,7 +81,7 @@
                                         //Não há registro de pedidos
                                         echo "
                                         <tr>
-                                            <td colspan='3'>Nenhum pedido encontrado</td>
+                                            <td class='alert alert-info' colspan = 4>Nenhum pedido encontrado</td>
                                         </tr>";
                                     }
                                 ?>

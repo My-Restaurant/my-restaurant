@@ -2,6 +2,7 @@
 
 <main class="container py-5">
     <section>
+    <a href="principal.php" class="btn btn-outline-danger mb-3"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>
         <h1>Mesas</h1>
         <hr>
         <table class="table table-striped">

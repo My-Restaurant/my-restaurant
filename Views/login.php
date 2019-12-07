@@ -24,7 +24,7 @@
     <title>Meu Restaurante</title>
 </head>
 
-<body>
+<body class="bg-light">
 
 
         

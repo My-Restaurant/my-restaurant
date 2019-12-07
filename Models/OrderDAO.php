@@ -161,6 +161,28 @@
 
         }
 
+        public static function countOpenOrders(){
+
+            $sql = new Sql();
+
+            try {
+
+                $result = $sql->select("
+                    SELECT COUNT(idOrder) 'total' FROM tb_orders WHERE idStatus = 1
+                ");
+
+                if(count($result) > 0){
+                    return $result[0];
+                } else {
+                    return false;
+                }
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
     }
 
 ?>

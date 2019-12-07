@@ -41,6 +41,28 @@
             return true;
         }
 
+        public static function countWaiters(){
+
+            $sql = new Sql();
+    
+            try {
+    
+                $result = $sql->select("
+                    SELECT COUNT(idWaiter) 'total' FROM tb_waiters 
+                ");
+    
+                if(count($result) > 0){
+                    return $result[0];
+                } else {
+                    return false;
+                }
+    
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+    
+        }
+
     }
 
 ?>

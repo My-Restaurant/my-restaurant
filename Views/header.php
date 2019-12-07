@@ -24,12 +24,12 @@
     <title>Meu Restaurante</title>
 </head>
 
-<body>
+<body class="bg-light">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <span>Garçom <b><?= ucfirst($_SESSION["userData"]->username);?></b></span>
+                <span class="text-white">Garçom <b><?= ucfirst($_SESSION["userData"]->username);?></b></span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

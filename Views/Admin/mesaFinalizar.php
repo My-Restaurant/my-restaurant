@@ -10,15 +10,17 @@
 
         <div class="container">
 
-            <h1>Finalizar o Pedido</h1>
-            <hr>
-            <p>Pesquise o pedido selecionando o número da mesa.</p>
+        <a href="principal.php" class="btn btn-outline-danger mb-4"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>
 
-            <div class="d-flex flex-row flex-wrap mt-5">
+            <h1>Finalizar o Pedido</h1>
+            <p>Pesquise o pedido selecionando o número da mesa.</p>
+            <hr>
+
+            <div class="d-flex flex-row flex-wrap mt-3">
                 <?php
                 if(count($deskDAO->showDeskWithOpenOrders()) > 0){
                     foreach ($deskDAO->showDeskWithOpenOrders() as $key => $desk) {
-                        echo "<a href='finalizarPedido.php?idDesk=$desk->idDesk' class='btn btn-primary btn-large my-2 mr-2'>$desk->descriptive</a>";
+                        echo "<a href='finalizarPedido.php?idDesk=$desk->idDesk' class='btn btn-danger btn-large my-2 mr-2'>$desk->descriptive</a>";
                     }
                 }
                 

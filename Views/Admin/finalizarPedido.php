@@ -20,12 +20,14 @@
 <main class="my-5">
 
         <div class="container">
+        <a href="mesaFinalizar.php" class="btn btn-outline-danger mb-4"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>
 
-            <h1>Finalizar o Pedido</h1>
-            <hr>
+            <h1 class="mb-2">Finalizar o Pedido</h1>
             <p>Para finalizar o pedido, verifique os itens do pedido e então clique em finalizar.</p>
+            
+            
 
-            <table class="table table-striped">
+            <table class="table table-striped mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
