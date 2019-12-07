@@ -11,7 +11,7 @@
     $desk = new Desk($_POST["numMesa"]);
 
     if(OrderDAO::verifyOrders($desk) !== false){
-        header("Location: itensPedido.php?idOrder=" . OrderDAO::verifyOrders($desk)->idOrder); 
+        header("Location: itensPedido.php?idOrder=" . OrderDAO::verifyOrders($desk)->idOrder . "&status=1"); 
     }
 
 ?>
@@ -38,7 +38,7 @@
                         foreach ($ret as $product) {
 
                             echo "<div class='custom-control custom-checkbox mb-3'>
-                            <input type='checkbox' class='custom-control-input' id='$product->idProduct' value='$product->idProduct'>
+                            <input type='checkbox' class='custom-control-input' id='$product->idProduct' name='product[]' value='$product->idProduct'>
                             <label class='custom-control-label' for='$product->idProduct'>$product->pDescriptive</label>
                           </div>";
                         }
@@ -82,7 +82,9 @@
 
         $dataItem = $orderDAO->insertItem($order);
 
-        header("Location: principal.php");
+        echo "<script>
+            window.location.href = 'principal.php' 
+        </script>";
 
     }
     

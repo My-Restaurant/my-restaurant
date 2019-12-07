@@ -39,6 +39,8 @@
                             ":prod" => $order->getOrderItem()[$i]->getProduct()->getIdProduct()
                         ]); 
 
+                        var_dump($result);
+                            
                         array_push($data, $result[0]);
 
                     } 

@@ -5,5 +5,6 @@ BEFORE DELETE ON tb_orders
 FOR EACH ROW  
 BEGIN 
 	DELETE FROM tb_orderItems WHERE idOrder = old.idOrder;
-END; 
-$$ DELIMITER ;
+END
+$$ 
+DELIMITER ;

@@ -44,9 +44,14 @@
         }
 
         $dataItem = $orderDAO->insertItem($order);
+    ?>
+    
+        <script>
+            let url = "itensPedido.php?idOrder=<?=$_GET['idOrder']?>&status=1"
+            window.location.href = url
+        </script>;
 
-        header("Location: itensPedido.php?idOrder={$_GET['idOrder']}");
-
+<?php
     }
 
 ?>

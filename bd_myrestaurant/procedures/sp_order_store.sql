@@ -1,4 +1,4 @@
-DELIMITER//
+DELIMITER //
 DROP PROCEDURE IF EXISTS sp_orders_store //
 CREATE PROCEDURE `sp_orders_store` (
 	IN pTotalPrice FLOAT,
