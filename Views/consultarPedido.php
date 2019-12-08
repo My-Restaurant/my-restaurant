@@ -5,12 +5,39 @@
         <div class="container">
 
             <h1>Pesquisar Pedido</h1>
-            <p>Pesquise o pedido selecionando o número da mesa.</p>
+            <p>Pesquise o pedido inserindo seu nome</p>
             <hr>
 
+            <label for="search">Insira o nome do pedido</label>
+            <input type="text" id="search" class="form-control">
+            <button id="btn-search" class="btn btn-primary mt-2">Pesquisar</button>
 
-            <div class="d-flex flex-row flex-wrap justify-content-center mt-4">
-                <a href="#" class="btn btn-primary btn-large my-2 mr-2">
+            <div id="orders" class="d-flex flex-row flex-wrap justify-content-center mt-4">
+                <?php 
+                
+                    require_once "../Models/OrderDAO.php";
+
+                    $orderDAO = new OrderDAO();
+
+                    $data = $orderDAO->listAllOrders();
+
+                    foreach ($data as $key => $value) {
+                        echo "<a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-primary btn-large my-2 mr-2'>
+                            <strong>$value->orderName</strong><br>
+                            <small>$value->descriptive</small><br>";
+                        
+                        if($value->idStatus == 1){
+                            echo "<span class='badge badge-warning'>Aberto</span>";
+                        } else {
+                            echo "<span class='badge badge-success'>Finalizado</span>";
+                        }
+                            
+                        echo "</a>";
+
+                    }
+
+                ?>
+                <!-- <a href="#" class="btn btn-primary btn-large my-2 mr-2">
                     <strong>Nome do Pedido</strong><br>
                     <small>Número da mesa</small>               
                 </a>
@@ -28,7 +55,7 @@
                 <a href="#" class="btn btn-primary btn-large my-2 mr-2">
                     <strong>Nome do Pedido</strong><br>
                     <small>Número da mesa</small>               
-                </a>
+                </a> -->
 
             </div>
 
@@ -36,4 +63,57 @@
 
     </main>
 
+<script src="js/HttpRequest.js"></script>
+<script>
+
+    document.querySelector("#btn-search").addEventListener("click", (e)=>{
+
+        let inputField = document.querySelector("#search")
+
+        if(inputField.value == ""){
+            alert("Insira o nome do pedido")
+            return false
+        }
+
+        let http = new HttpRequest()
+
+        http.xmlHttpGet('buscarPedido.php', ()=>{
+
+            http.complete(()=>{
+                let response = http.getResponseText()
+                let orders = document.querySelector("#orders")
+                orders.innerHTML = "";
+                if(response.length > 0){
+                    response.forEach(res => {
+
+                        let json = {class: "", txt: ""}
+
+                        if(res.idStatus == 1){
+                            json.class = "badge-warning"
+                            json.txt = "Aberto"
+                        } else {
+                            json.class = "badge-success"
+                            json.txt = "Finalizado"
+                        }
+
+                        orders.innerHTML += `
+                        <a href="itensPedido.php?idOrder=${res.idOrder}&status=${res.idStatus}" class="btn btn-primary btn-large my-2 mr-2">
+                            <strong>${res.orderName}</strong><br>
+                            <small>${res.descriptive}</small>   
+                            <br>  
+                            <span class='badge ${json.class}'>${json.txt}</span>
+                        </a>
+                        `
+                    });
+                    
+                } else {
+                    orders.innerHTML = "<div class='alert alert-danger'>Nenhuma pedido encontrado</div>";
+                }
+            })
+
+        }, `?orderName=${inputField.value}`)
+
+    })
+
+</script>
 <?php require_once "footer.php";?>

@@ -14,7 +14,7 @@
                     ":desk"=> $order->getDesk()->getIdDesk(),
                     ":status"=> $order->getStatus()->getIdStatus(),
                     ":waiter"=> (int)$order->getWaiter()->getIdWaiter(),
-                    ":orderName"=> $order->getOrderName()
+                    ":orderName"=> strtoupper($order->getOrderName())
                 ]);
                 $sql->close();
                 return $result[0];
@@ -59,6 +59,22 @@
                 ]);
                 $sql->close();
                 return $result;
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
+
+        public function listAllOrders(){
+
+            $sql = new Sql();
+            try {
+                
+                $result = $sql->select("SELECT * FROM tb_orders
+                INNER JOIN tb_desk USING(idDesk)");
+                $sql->close();
+                return $result;
+
             } catch (Exception $e) {
                 die($e->getMessage());
             }
@@ -126,8 +142,10 @@
 
             try {
                 
-                $result = $sql->query("DELETE FROM tb_orderItems WHERE idOrderItem = :id", [
-                    ":id"=> $order->getOrderItem()[0]->getIdOrderItem()
+                $result = $sql->query("CALL sp_orderItems_delete(:id, :qtd, :order)", [
+                    ":id"=> $order->getOrderItem()[0]->getIdOrderItem(),
+                    ":qtd"=> $order->getOrderItem()[0]->getQuantity(),
+                    ":order"=> $order->getIdOrder()
                 ]);
 
                 return $result;
@@ -225,7 +243,26 @@
             }
 
         }
-        
+
+        function searchOrdersByName($order){
+
+            $sql = new Sql();
+
+            try {
+
+                $result = $sql->select("SELECT * FROM tb_orders o
+                INNER JOIN tb_desk d USING(idDesk)
+                WHERE o.orderName LIKE :search ", [
+                    ":search" => "%" . strtoupper($order->getOrderName()) . "%"
+                ]);
+
+                return $result;
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+        }
 
     }
 

@@ -39,7 +39,10 @@
                 
                 if($_GET["status"] == 1){
                     echo "<td class='text-center'>";?> 
-                            <a href="excluirItemPedido.php?idOrderItem=<?php echo $value->idOrderItem;?>&idOrder=<?php echo $idOrder;?>" onclick = "return confirm('Deseja excluir esse item?')"><i class='fas fa-times text-danger'></i></a>
+                            <a data-desc="<?=$value->product?>" data-order="<?=$_GET["idOrder"]?>"
+                            class="delete-order" data-toggle="modal" data-target="#modal-itens" 
+                            data-key="<?=$value->idOrderItem?>" data-qtd="<?=$value->quantity?>"
+                            href="#"><i class='fas fa-times text-danger'></i></a>
                     <?php echo "</td>";
                 } else {
                     echo "<td></td>";
@@ -68,7 +71,75 @@
         }
     ?>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="modal-itens" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Dados do pedido</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
- 
+
+<script src="js/HttpRequest.js"></script>
+<script>
+
+    let button = document.querySelectorAll(".delete-order")
+
+    button.forEach(btn => {
+        
+        btn.addEventListener("click", (e)=>{
+            document.querySelector(".modal-body").innerHTML = `
+                <form class="px-3" id="form-delete-item">
+                    <div class="row">
+                        <label for="qtd">${btn.dataset.desc}</label>
+                        <input type="number" min="1" max="${btn.dataset.qtd}" class="form-control" name="qtd" id="qtd" value="${btn.dataset.qtd}">
+                        <input type="hidden" name="idOrderItem" value="${btn.dataset.key}">  
+                        <input type="hidden" name="idOrder" value="${btn.dataset.order}">    
+                    </div>
+                    <input type="submit" class="btn btn-block btn-primary mt-2" value="Remover">
+                </form>
+            `
+
+            let form = document.querySelector("#form-delete-item")
+
+            form.addEventListener("submit", (e)=>{
+                e.preventDefault()
+                
+                let formData = new FormData(form)
+
+                let http = new HttpRequest();
+
+                http.xmlHttpPost("excluirItemPedido.php", ()=>{
+                    
+                    http.complete(()=>{
+                        if(http.getResponseText()){
+                            alert("Item excluido com sucesso!")
+                            window.location.reload()
+                        } else {
+                            alert("Erro ao excluir item, por favor tente novamente.")
+                        }
+                    })
+
+                }, formData)
+
+            })
+
+        })
+
+    });
+
+</script>
 
 <?php require_once "footer.php";?>

@@ -11,7 +11,7 @@
         </div>
 
         <a href="anotarPedido.php" class="btn btn-b btn-danger p-4 mb-2"><i class="fas fa-plus mr-2"></i>Anotar pedido</a>
-        <a href="consultarPedido.html" class="btn btn-b btn-danger p-4 mb-2"><i class="fas fa-search mr-2"></i>Consultar um pedido</a>
+        <a href="consultarPedido.php" class="btn btn-b btn-danger p-4 mb-2"><i class="fas fa-search mr-2"></i>Consultar um pedido</a>
 
 
         <h2 class="mt-5">Pedidos Recentes</h2>
