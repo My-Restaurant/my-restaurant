@@ -18,7 +18,7 @@ BEGIN
 		SET i1.quantity = i1.quantity + pQtd, i1.totalPrice = i1.totalPrice + pQtd*_total;
     END IF;
     
-    SELECT * FROM tb_orderItems WHERE idOrderItem = LAST_INSERT_ID();
+    UPDATE tb_orders SET totalPrice = totalPrice + pQtd * _total WHERE idOrder = pOrder;
     
 END
 //

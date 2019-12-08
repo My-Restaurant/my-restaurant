@@ -55,7 +55,7 @@
                             echo "<div class='form-group row'> 
                             <div class='col-8'>
                                 <div class='custom-control custom-checkbox mb-3'>
-                                    <input type='checkbox' class='custom-control-input' id='$product->idProduct' name='product[]' value='$product->idProduct'> 
+                                    <input type='checkbox' class='custom-control-input' id='$product->idProduct' name='product[]' value='$product->idProduct'>
                                     <label class='custom-control-label' for='$product->idProduct'>$product->pDescriptive</label>
                                 </div>
                             </div>
@@ -80,31 +80,18 @@
     
     if(isset($_POST["product"])){
 
-        require_once "../Models/Waiter.php";
-        require_once "../Models/Status.php";
-        require_once "../Models/Product.php";
-    
-        $waiter = new Waiter($_SESSION["userData"]->idWaiter);
-        $status = new Status();
-    
-        $order = new Order(null, 0.0, $waiter, $desk, $status);
-        $order->setOrderName($_POST["orderName"]);
-        $orderDAO = new OrderDAO();
-         
-        $data = $orderDAO->insert($order);
-        
-        $order->setIdOrder($data->idOrder);
+        $productData = [];
 
         foreach ($_POST["product"] as $key => $value) {
-            $prod = new Product($value);
-            $order->setOrderItem(null, 1, 0.0, $prod); 
+            array_push($productData, ["id"=> $value, "qtd"=> 1]);
         }
 
-        $dataItem = $orderDAO->insertItem($order);
+        $_SESSION["order"] = $productData;
 
-        echo "<script>
-            window.location.href = 'principal.php' 
-        </script>";
+        $_SESSION["numMesa"] = $_POST["numMesa"];
+        $_SESSION["orderName"] = $_POST["orderName"];
+
+        echo "<script>window.location.href = 'confirmarPedido.php' </script>";
 
     }
     

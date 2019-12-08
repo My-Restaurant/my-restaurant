@@ -30,7 +30,7 @@ class ProductDAO{
         c.descriptive 'cDescriptive'  FROM tb_products p INNER JOIN tb_categories c using(idCategory)
         WHERE idProduct = :id", [":id" => $prod->getIdProduct()]);
         $sql->close();
-        return $result;
+        return $result[0];
     }
 
     public function updateProduct($prod){

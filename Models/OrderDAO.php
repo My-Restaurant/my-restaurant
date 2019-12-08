@@ -28,28 +28,23 @@
 
             $sql = new Sql();
             try {
-                
-                $data = [];
+            
                 for ($i=0; $i < count($order->getOrderItem()); $i++) { 
                     
                     if($order->getOrderItem()[$i]->getProduct() !== null){
 
-                        $result = $sql->select("CALL sp_ordersItems_store(:qtd, :order, :prod)", [
+                        $sql->query("CALL sp_ordersItems_store(:qtd, :order, :prod)", [
                             ":qtd" => $order->getOrderItem()[$i]->getQuantity(),
                             ":order" => $order->getIdOrder(),
                             ":prod" => $order->getOrderItem()[$i]->getProduct()->getIdProduct()
                         ]); 
-
-                        var_dump($result);
-                            
-                        array_push($data, $result[0]);
 
                     } 
 
                 }
                 
                 $sql->close();
-                return $data;
+
             } catch (Exception $e) {
                 die($e->getMessage);
             }

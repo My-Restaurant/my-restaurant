@@ -39,27 +39,20 @@
 
 <?php 
 
-    if(isset($_POST["product"])){
+    if($_POST){
 
-        require_once "../Models/OrderDAO.php";
+        $productData = [];
 
-        $order = new Order($_GET["idOrder"]);
-        $orderDAO = new OrderDAO();
-        
         foreach ($_POST["product"] as $key => $value) {
-            $prod = new Product($value);
-            $order->setOrderItem(null, 1, 0.0, $prod); 
+            array_push($productData, ["id"=> $value, "qtd"=> 1]);
         }
-
-        $dataItem = $orderDAO->insertItem($order);
-    ?>
     
-        <script>
-            let url = "itensPedido.php?idOrder=<?=$_GET['idOrder']?>&status=1"
-            window.location.href = url
-        </script>;
+        $_SESSION["order"] = $productData;
+        $_SESSION["idOrder"] = $_GET["idOrder"];
 
-<?php
+        echo "<script>window.location.href = 'confirmarPedido.php' </script>";
+
     }
+    
 
 ?>
