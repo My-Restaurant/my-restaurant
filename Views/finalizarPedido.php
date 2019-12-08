@@ -2,11 +2,8 @@
 
     session_start();
 
-    $id = str_replace(",", "", $_POST["id"]);
-    $qtd = str_replace(",", "", $_POST["qtd"]);
-
-    $id = str_split($id, 1);
-    $qtd = str_split($qtd, 1);
+    $id = explode(",", $_POST["id"]);
+    $qtd = explode(",", $_POST["qtd"]);
     
     if(isset($_SESSION["idOrder"])){
 

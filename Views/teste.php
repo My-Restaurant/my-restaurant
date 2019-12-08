@@ -19,6 +19,12 @@
 
     // var_dump($orderDAO->insertItem($order));
 
+    $a = "1,10";
+
+    $arr = explode(',', $a);
+
+    var_dump($arr);
+
     echo password_hash("321", PASSWORD_DEFAULT, [
         "cost"=> 12
     ]);
