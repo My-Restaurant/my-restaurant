@@ -1,3 +1,5 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS `sp_orderItems_delete` //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_orderItems_delete`(
 	IN pId INT,
     IN pQtd INT,
@@ -19,3 +21,5 @@ BEGIN
     WHERE idOrder = pOrder;
     
 END
+//
+DELIMITER ;
