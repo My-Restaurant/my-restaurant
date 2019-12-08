@@ -51,8 +51,12 @@ class DeskDAO{
         $sql = new Sql();
         try {
             
-            $ret = $sql->select("SELECT * FROM tb_desk
-            WHERE idDesk IN (SELECT idDesk FROM tb_orders WHERE idStatus = 1)");
+            //Antiga
+            // $ret = $sql->select("SELECT * FROM tb_desk
+            // WHERE idDesk IN (SELECT idDesk FROM tb_orders WHERE idStatus = 1)");
+            
+            $ret = $sql->select("SELECT * FROM tb_desk INNER JOIN tb_orders USING(idDesk)
+            WHERE idStatus = 1 ");
 
             return $ret;
             

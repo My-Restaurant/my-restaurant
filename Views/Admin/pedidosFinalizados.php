@@ -39,7 +39,7 @@
                     <td>$order->orderName</td>
                     <td>$order->username</td>
                     <td>$order->descriptive</td>
-                    <td>" . number_format($order->totalPrice, 2, ',', '.') ."</td>
+                    <td>" . number_format($order->totalPrice, 2, ",",".") ."</td>
                     <td>{$dt->format('d/m/Y')}</td>
                 </tr>";
             }

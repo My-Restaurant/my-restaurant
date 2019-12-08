@@ -4,13 +4,15 @@
     require_once "../Models/ProductDAO.php";
 ?>
 <main>
-    <div class="container">
+    <div class="container py-5">
+        <h1>Confirmar Pedido</h1>
+        <hr>
         <div class="card">
             <div class="card-header">
                 Pedido
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row d-flex align-items-center">
                     <div class="col-6">
                         <?php 
                             foreach ($_SESSION["order"] as $key => $value) {
@@ -28,7 +30,7 @@
                             foreach ($_SESSION["order"] as $key => $value) {
                         ?>
                             <p>
-                                <input type='number' name='qtd' value='<?=$value["qtd"]?>' data-key='prod<?=$value["id"]?>' >
+                                <input type='number' class='form-control' name='qtd' value='<?=$value["qtd"]?>' data-key='prod<?=$value["id"]?>' >
                             </p>
                         <?php 
                             }
@@ -37,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <button id="send" class="btn btn-primary">Enviar</button>
+        <button id="send" class="btn btn-primary mt-3 btn-b">Enviar</button>
     </div>
 </main>
 

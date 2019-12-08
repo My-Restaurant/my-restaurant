@@ -20,7 +20,11 @@
                 <?php
                 if(count($deskDAO->showDeskWithOpenOrders()) > 0){
                     foreach ($deskDAO->showDeskWithOpenOrders() as $key => $desk) {
-                        echo "<a href='finalizarPedido.php?idDesk=$desk->idDesk' class='btn btn-danger btn-large my-2 mr-2'>$desk->descriptive</a>";
+                        echo "<a href='finalizarPedido.php?idDesk=$desk->idDesk' class='btn btn-danger btn-large my-2 mr-2'>
+                            <strong>$desk->orderName</strong><br>
+                            <small>$desk->descriptive</small>   
+                        </a>";
+
                     }
                 }
                 
