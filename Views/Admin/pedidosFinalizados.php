@@ -36,11 +36,11 @@
             foreach($ret as $order){
                 $dt = new DateTime($order->dt_register);
                 echo "<tr>
-                    <td>$order->orderName</td>
-                    <td>$order->username</td>
-                    <td>$order->descriptive</td>
-                    <td>" . number_format($order->totalPrice, 2, ",",".") ."</td>
-                    <td>{$dt->format('d/m/Y')}</td>
+                    <td class='align-middle'>$order->orderName</td>
+                    <td class='align-middle'>$order->username</td>
+                    <td class='align-middle'>$order->descriptive</td>
+                    <td class='align-middle'>" . number_format($order->totalPrice, 2, ",",".") ."</td>
+                    <td class='align-middle'>{$dt->format('d/m/Y')}</td>
                 </tr>";
             }
 

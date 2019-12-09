@@ -26,14 +26,14 @@
 
                 if(count($retProd) > 0){
                     foreach( $retProd as $index => $product){
-                        echo "<tr><th scope='col'>".$index."</th>
-                        <td>".$product->pDescriptive."</td>
-                        <td>".$product->price."</td>
-                        <td>".$product->cDescriptive."</td>";
-                        echo "<td><a href='produtosCRUD.php?oper=a&id={$product->idProduct}'>Alterar</a></td>";
+                        echo "<tr><th scope='col' class='align-middle'>".$index."</th>
+                        <td class='align-middle'>".$product->pDescriptive."</td>
+                        <td class='align-middle'>".$product->price."</td>
+                        <td class='align-middle'>".$product->cDescriptive."</td>";
+                        echo "<td class='align-middle'><a href='produtosCRUD.php?oper=a&id={$product->idProduct}'><i class='fas fa-sync-alt text-info'></i></a></td>";
                 ?>
-                        <td><a href = "produtosCRUD.php?oper=e&id=<?php echo $product->idProduct;?>" onclick = 
-                        " return confirm('Deseja excluir esta Produto?')">Excluir</a></td></tr>
+                        <td class='align-middle'><a href = "produtosCRUD.php?oper=e&id=<?php echo $product->idProduct;?>" onclick = 
+                        " return confirm('Deseja excluir esta Produto?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
 
                 <?php
 
@@ -45,7 +45,7 @@
 
         </table>
 
-        <a href="produtosCRUD.php?oper=i" class="btn btn-outline-primary">Novo Produto</a>
+        <a href="produtosCRUD.php?oper=i" class="btn btn-danger btn-b"><i class="fas fa-plus mr-2"></i>Novo Produto</a>
     </section>
 
 </main>

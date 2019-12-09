@@ -13,9 +13,9 @@
         <thead>
             <tr>
                 <th scope="col">Prato</th>
-                <th scope="col" class="text-center">Quantidade</th>
-                <th scope="col">Preço unitario</th>
-                <th scope="col">Preço total</th>
+                <th scope="col" class="text-center">Quant.</th>
+                <th scope="col" class="text-center">Preço unitario</th>
+                <th scope="col" class="text-center">Preço total</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -31,14 +31,14 @@
                 $total += (float)$value->totalPrice;
                 echo "
                     <tr>
-                        <td>$value->product</td>
-                        <td class='text-center'>$value->quantity</td>
-                        <td>R$ " . number_format($value->price, 2, ",", ".") . "</td>
-                        <td>R$ " . number_format($value->totalPrice, 2, ",", ".") . "</td>
+                        <td class='align-middle'>$value->product</td>
+                        <td class='align-middle text-center'>$value->quantity</td>
+                        <td class='align-middle text-center'>R$ " . number_format($value->price, 2, ",", ".") . "</td>
+                        <td class='align-middle text-center'>R$ " . number_format($value->totalPrice, 2, ",", ".") . "</td>
                 ";
                 
                 if($_GET["status"] == 1){
-                    echo "<td class='text-center'>";?> 
+                    echo "<td class='align-middle text-center'>";?> 
                             <a data-desc="<?=$value->product?>" data-order="<?=$_GET["idOrder"]?>"
                             class="delete-order" data-toggle="modal" data-target="#modal-itens" 
                             data-key="<?=$value->idOrderItem?>" data-qtd="<?=$value->quantity?>"
@@ -54,17 +54,17 @@
         ?>
         </tbody>
 
-        <tfoot class='bg-primary text-white'>
+        <tfoot class='bg-dark text-white'>
             <tr>
-                <td colspan='4' class='text-center'><b>Total</b></td>
-                <td><b>R$<?= number_format($total,2,",",".");?><b></td>
+                <td colspan='3' class='text-center bg-dark'><b>Total</b></td>
+                <td colspan='2' class='bg-dark'><b>R$<?= number_format($total,2,",",".");?><b></td>
             </tr>
         </tfoot>
     </table>
     <?php 
         if($_GET["status"] != 2){
     ?>
-    <a href="inserirItem.php?idOrder=<?=$_GET['idOrder']?>" class='btn btn-b btn-outline-danger'>Adicionar Item</a>
+    <a href="inserirItem.php?idOrder=<?=$_GET['idOrder']?>" class='btn btn-b btn-danger'>Adicionar Item</a>
     <?php
         } else {
             echo "<div class='alert alert-success text-center'><b>Pedido finalizado<b></div>";

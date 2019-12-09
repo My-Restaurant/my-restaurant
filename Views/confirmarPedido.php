@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <button id="send" class="btn btn-primary mt-3 btn-b">Enviar</button>
+        <button id="send" class="btn btn-danger mt-3 btn-b">Enviar</button>
     </div>
 </main>
 

@@ -24,11 +24,11 @@
                 if(count($returnCat) > 0){
                     foreach($returnCat as $index => $category){
                         echo "<tr><th scope='col'>".$index."</th>
-                        <td>".$category->descriptive."</td>";
-                        echo "<td><a href='categoriasCRUD.php?oper=a&id={$category->idCategory}'>Alterar</a></td>";
+                        <td class='align-middle'>".$category->descriptive."</td>";
+                        echo "<td class='align-middle'><a href='categoriasCRUD.php?oper=a&id={$category->idCategory}'><i class='fas fa-sync-alt text-info'></i></a></td>";
                 ?>
-                        <td><a href = "categoriasCRUD.php?oper=e&id=<?php echo $category->idCategory?>"
-                        onclick = "return confirm('Deseja excluir esta Mesa?')">Excluir</a></td></tr>
+                        <td class='align-middle'><a href = "categoriasCRUD.php?oper=e&id=<?php echo $category->idCategory?>"
+                        onclick = "return confirm('Deseja excluir esta Mesa?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
 
                 <?php
 
@@ -40,7 +40,7 @@
 
         </table>
 
-        <a href="categoriasCRUD.php?oper=i" class="btn btn-outline-primary">Nova categoria</a>
+        <a href="categoriasCRUD.php?oper=i" class="btn btn-danger btn-b"><i class="fas fa-plus mr-2"></i>Nova categoria</a>
     </section>
 
 </main>

@@ -22,12 +22,12 @@
 
                 if(count($retDesk) > 0){
                     foreach($retDesk as $index => $desk){
-                        echo "<tr><th scope='col'>".$index."</th>
-                        <td>".$desk->descriptive."</td>";
-                        echo "<td><a href='mesasCRUD.php?oper=a&id={$desk->idDesk}'>Alterar</a></td>";
+                        echo "<tr><th scope='col' class='align-middle'>".$index."</th>
+                        <td class='align-middle'>".$desk->descriptive."</td>";
+                        echo "<td class='align-middle'><a href='mesasCRUD.php?oper=a&id={$desk->idDesk}'><i class='fas fa-sync-alt text-info'></i></a></td>";
                 ?>
-                        <td><a href = "mesasCRUD.php?oper=e&id=<?php echo $desk->idDesk?>" onclick = 
-                        " return confirm('Deseja excluir esta Mesa?')">Excluir</a></td></tr>
+                        <td class='align-middle'><a href = "mesasCRUD.php?oper=e&id=<?php echo $desk->idDesk?>" onclick = 
+                        " return confirm('Deseja excluir esta Mesa?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
 
                 <?php
 
@@ -39,7 +39,7 @@
 
         </table>
 
-        <a href="mesasCRUD.php?oper=i" class="btn btn-outline-primary">Nova Mesa</a>
+        <a href="mesasCRUD.php?oper=i" class="btn btn-danger btn-b"><i class="fas fa-plus mr-2"></i>Nova Mesa</a>
     </section>
 
 </main>

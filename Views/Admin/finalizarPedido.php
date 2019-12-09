@@ -32,10 +32,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Prato</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Preço unitario</th>
-                        <th scope="col">Preço total</th>
+                        <th scope="col" class="text-center">Quant.</th>
+                        <th scope="col" class="text-center">Preço unitario</th>
+                        <th scope="col" class="text-center">Preço total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,12 +46,11 @@
                 $total += (float)$item->totalPrice;
                 echo "
                     <tr>
-                        <td>$item->idOrderItem</td>
-                        <td>$item->product</td>
-                        <td>$item->category</td>
-                        <td>$item->quantity</td>
-                        <td>R$ " . number_format($item->price, 2, ",", ".") . "</td>
-                        <td>R$ " . number_format($item->totalPrice, 2, ",", ".") . "</td>
+                        <td class='align-middle'>$key</td>
+                        <td class='align-middle'>$item->product</td>
+                        <td class='align-middle text-center'>$item->quantity</td>
+                        <td class='align-middle text-center'>R$ " . number_format($item->price, 2, ",", ".") . "</td>
+                        <td class='align-middle text-center'>R$ " . number_format($item->totalPrice, 2, ",", ".") . "</td>
                     </tr>
                 ";
             }
@@ -60,16 +58,16 @@
             ?>
         </tbody>
 
-        <tfoot class='bg-primary text-white'>
+        <tfoot class='bg-dark text-white'>
             <tr>
-                <td colspan='5' class='text-center'><b>Total</b></td>
-                <td><b>R$<?= number_format($total,2,",",".");?><b></td>
+                <td colspan='4' class='text-center'><b>Total</b></td>
+                <td colspan='1'><b>R$<?= number_format($total,2,",",".");?><b></td>
             </tr>
         </tfoot>
         </table>
             <form action="#" method="POST" onsubmit="return confirm('Deseja finalizar o pedido?')">
                 <div class="form-group  justify-content-end d-flex">
-                    <input type="submit" class="btn btn-success btn-block py-3" value="Finalizar">
+                    <button type="submit" class="btn btn-success btn-block py-3" >Finalizar<i class="fas fa-check ml-2"></i></button>
                 </div>
             </form>    
         </div>

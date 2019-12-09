@@ -1,5 +1,7 @@
 .btn-large{
-    padding: 80px;
+    width: 100%;
+    height: auto;
+    padding: 40px 0;
 }
 
 /* Extra small devices (phones, 576px and down) */
@@ -14,10 +16,7 @@
 
 /* Medium devices (landscape tablets, 768px and down) */
 @media only screen and (max-width: 768px) {
-    .btn-large{
-        width: 100%;
-        padding: 30px;
-    }
+
 }
 
 /* Large devices (laptops/desktops, 992px and down) */

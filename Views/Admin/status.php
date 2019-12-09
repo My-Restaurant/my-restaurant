@@ -23,9 +23,9 @@
 
                 if(count($retStatus) > 0){
                     foreach( $retStatus as $index => $status ){
-                        echo "<tr><th scope='col'>".$index."</th>
-                        <td>".$status->descriptive."</td>";
-                        echo "<td><a href='statusCRUD.php?oper=a&id={$status->idStatus}'>Alterar</a></td>";
+                        echo "<tr><th scope='col' class='align-middle'>".$index."</th>
+                        <td class='align-middle'>".$status->descriptive."</td>";
+                        echo "<td class='align-middle'><a href='statusCRUD.php?oper=a&id={$status->idStatus}'><i class='fas fa-sync-alt text-info'></i></a></a></td>";
                 ?>
                         <!-- <td><a href = "statusCRUD.php?oper=e&id= <?php //echo $status->idStatus;?>" onclick = 
                         "return confirm('Deseja excluir esta Mesa?')">Excluir</a></td></tr> -->
@@ -40,7 +40,7 @@
 
         </table>
 
-        <a href="statusCRUD.php?oper=i" class="btn btn-outline-primary">Novo Status</a>
+        <a href="statusCRUD.php?oper=i" class="btn btn-danger btn-b"><i class="fas fa-plus mr-2"></i>Novo Status</a>
     </section>
 
 </main>

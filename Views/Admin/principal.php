@@ -8,6 +8,11 @@
 <main>
 
     <section class="container py-5">
+        <div class="row my-5">
+            <div class="col-12">
+                <h2 class="text-right" id="date"></h2>
+            </div>
+        </div>
         <div class="row mt-3">
             <div class="col-12 col-lg-4">
                 <div class="card text-white bg-success mb-3">
@@ -69,4 +74,42 @@
 
 </main>
 
-<?php require_once "footer.php" ?>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/principal.js"></script>
+
+    <script>
+
+        document.querySelector("body").addEventListener("load", ()=>{
+            startTime()
+        })
+
+        //hours
+        function startTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            //adicionar 0 na frente dos num. < 10
+            m = checkTime(m);
+            s = checkTime(s);
+
+            document.getElementById("hour").innerHTML = `${h}:${m}:${s}`;
+
+            var t = setTimeout(function () { startTime() }, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
+</body>
+
+</html>

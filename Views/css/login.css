@@ -13,36 +13,16 @@ body{
     width: 100%;
 }
 
-/* .content-img{
-    height: 100%;
-    min-height: 100vh;
-    background-image: url('../img/login_restaurant.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
-
 .logo{
     width: 150px;
     height: 81px;
 }
 
 .btn-lg{
-    position: absolute;
     padding: 40px;
     border-radius: 15px;
 }
 
-/* .border-login{
-    border-radius: 10px;
-} */
 
-.block-img{
-    height: 100vh;
-    background-image: url("../img/login_restaurant.jpg");
-    background-size: cover;
-}
 
-i{
-    font-size: 24pt;
-}
+

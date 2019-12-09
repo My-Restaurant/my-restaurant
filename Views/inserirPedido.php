@@ -23,27 +23,6 @@
         <a href="principal.php" class="btn btn-outline-danger mb-3"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>            
         <h4 class="mt-4">Produtos</h4><hr>
             <form action="#" method="POST">
-                    <div class="form-group mb-5">
-                        <label for="search"><strong>Pesquisar por Categoria</strong></label>
-                        <select name="category" id="category" class="form-control">
-                            <option value="0">Escolha uma categoria</option>
-                            <?php
-
-                            require_once "../Models/CategoryDAO.php";
-                            $catDAO= new CategoryDAO();
-                            $retCat = $catDAO->allCategories();
-
-                            if(count($retCat) > 0){
-                                
-                                foreach($retCat as $category){
-                                    echo "<option value='$category->idCategory'>$category->descriptive</option>";
-                                }
-                            }
-                            
-                            ?>
-                        </select>
-                    </div>
-
                         <?php 
                         
                         require_once "../Models/ProductDAO.php";

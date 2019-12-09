@@ -52,6 +52,7 @@ if($_POST){
 
 <main class="container py-5">
     <section>
+    <a href="categorias.php" class="btn btn-outline-danger mb-3"><i class="fas fa-arrow-left mr-2" style="font-size: 10pt;"></i>Voltar</a>
         <h1>Categorias</h1>
         <hr>
 
@@ -62,7 +63,7 @@ if($_POST){
             <input type="text" name="category" class="form-control" value="<?php if($oper == "a") echo $returnCat[0]->descriptive;?>" required>
 		</div>
 
-        <input type="submit" value="Salvar" class="btn btn-outline-primary">
+        <input type="submit" value="Salvar" class="btn btn-danger">
 
 
 

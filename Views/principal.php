@@ -49,8 +49,7 @@
                                     <th scope="col">Nome</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Horário</th>
-                                    <th scope="col">Ações</th>
-                                    <th scope="col"></th>
+                                    <th scope="col" colspan="2"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,16 +64,16 @@
                                                     <td class='align-middle'>$value->descriptive</td>
                                                     <td class='align-middle'>" . $dateTime->format('H:i') /*formatando a hora*/  . "</td> 
                                                     <td class='align-middle'>
-                                                        <a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-outline-primary'>Ver Itens</a>
+                                                        <a href='itensPedido.php?idOrder=$value->idOrder&status=$value->idStatus' class='btn btn-outline-info'><i class='fas fa-list fa-1x'></i></a></td>
                                                     ";
 
                                                     if($value->idStatus != 2){
                                                         ?>
-                                                            <a href="excluirPedido.php?idOrder=<?php echo $value->idOrder;?>" class="btn btn-outline-danger"  onclick = "return confirm('Deseja excluir esse pedido?')"><i class='fas fa-times'></i></a>
+                                                            <td class='align-middle'><a href="excluirPedido.php?idOrder=<?php echo $value->idOrder;?>" class="btn btn-outline-danger"  onclick = "return confirm('Deseja excluir esse pedido?')"><i class='fas fa-times'></i></a></td>
                                                         <?php 
                                                     } else {
-                                                        echo "<button class='btn btn-success' disabled><i class='fas fa-check fa-1x'></i></button></td>";
-                                                    }
+                                                        echo "<td class='align-middle'><button class='btn btn-success' disabled><i class='fas fa-check fa-1x'></i></button></td>";
+                                                    } 
 
                                                 echo "</tr>";
    

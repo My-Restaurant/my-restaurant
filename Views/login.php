@@ -48,13 +48,13 @@
                                 <input type="password" name="passwd" class="form-control" id="passwd" placeholder="Insira sua senha">
                             </div>
 
-                            <div class="from-group form-check">
-                                <input type="checkbox" class="form-check-input" id="check">
-                                <label for="check" class="form-check-label">Lembre-me</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check">
+                                <label for="check" class="custom-control-label">Lembre-me</label>
                             </div>
 
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-lg btn-danger mt-3"><i class="fas fa-arrow-right"></i></button>
+                            <div class="d-flex justify-content-center mt-3">
+                                <button type="submit" class="btn btn-lg btn-danger"><i class="fas fa-arrow-right fa-2x"></i></button>
                             </div>
                         </form>
                 </div>
