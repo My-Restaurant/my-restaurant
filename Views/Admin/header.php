@@ -38,7 +38,10 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                    <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link" href="principal.php">Inicio</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="mesaFinalizar.php">Finalizar Pedido</a>
                         </li>
                         <li class="nav-item">
@@ -56,6 +59,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../logout.php">Sair</a>
                         </li>
+                    </ul>
                 </div>
             </div>
         </nav>

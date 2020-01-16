@@ -28,7 +28,7 @@
                         echo "<td class='align-middle'><a href='categoriasCRUD.php?oper=a&id={$category->idCategory}'><i class='fas fa-sync-alt text-info'></i></a></td>";
                 ?>
                         <td class='align-middle'><a href = "categoriasCRUD.php?oper=e&id=<?php echo $category->idCategory?>"
-                        onclick = "return confirm('Deseja excluir esta Mesa?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
+                        onclick = "return confirm('Deseja excluir esta Categoria?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
 
                 <?php
 

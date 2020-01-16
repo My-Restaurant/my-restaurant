@@ -108,7 +108,7 @@
                         <input type="hidden" name="idOrderItem" value="${btn.dataset.key}">  
                         <input type="hidden" name="idOrder" value="${btn.dataset.order}">    
                     </div>
-                    <input type="submit" class="btn btn-block btn-primary mt-2" value="Remover">
+                    <input type="submit" class="btn btn-block btn-danger w-100 mt-2" value="Remover">
                 </form>
             `
 

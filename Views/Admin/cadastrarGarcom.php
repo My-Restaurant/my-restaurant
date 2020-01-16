@@ -48,41 +48,43 @@
 
 <?php 
 
-    if(isset($_POST) && $_POST["usertype"] !== "0"){
+    if($_POST){
 
-        if($_POST["usertype"] == "W"){
+        if(isset($_POST) && $_POST["usertype"] !== "0"){
 
-            require_once "../../Models/WaiterDAO.php";
+            if($_POST["usertype"] == "W"){
 
-            $waiter = new Waiter(null, 10, null, 
-            $_POST["username"], $_POST["cpf"], $_POST["usertype"],
-            $_POST["email"], $_POST["passwd"]);
+                require_once "../../Models/WaiterDAO.php";
 
-            $waiterDAO = new WaiterDAO();
+                $waiter = new Waiter(null, 10, null, 
+                $_POST["username"], $_POST["cpf"], $_POST["usertype"],
+                $_POST["email"], $_POST["passwd"]);
 
-            $ret = $waiterDAO->insertWaiter($waiter);
+                $waiterDAO = new WaiterDAO();
 
-            echo "<script>
-                alert('Usuário cadastrado com sucesso!'); window.location.href = 'principal.php';
-            </script>";
+                $ret = $waiterDAO->insertWaiter($waiter);
 
-        } else {
+                echo "<script>
+                    alert('Usuário cadastrado com sucesso!'); window.location.href = 'principal.php';
+                </script>";
 
-            require_once "../../Models/AdminDAO.php";
+            } else {
 
-            $admin = new Admin(null, $_POST["username"], 
-            $_POST["cpf"], $_POST["usertype"],
-            $_POST["email"], $_POST["passwd"]);
+                require_once "../../Models/AdminDAO.php";
 
-            $adminDAO = new AdminDAO();
-            $adminDAO->insert($admin);
+                $admin = new Admin(null, $_POST["username"], 
+                $_POST["cpf"], $_POST["usertype"],
+                $_POST["email"], $_POST["passwd"]);
 
-            echo "<script>
-                alert('Usuário cadastrado com sucesso!'); window.location.href = 'principal.php';
-            </script>";
+                $adminDAO = new AdminDAO();
+                $adminDAO->insert($admin);
+
+                echo "<script>
+                    alert('Usuário cadastrado com sucesso!'); window.location.href = 'principal.php';
+                </script>";
+
+            }
 
         }
-
     }
-
 ?>

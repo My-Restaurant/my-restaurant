@@ -33,7 +33,7 @@
                         echo "<td class='align-middle'><a href='produtosCRUD.php?oper=a&id={$product->idProduct}'><i class='fas fa-sync-alt text-info'></i></a></td>";
                 ?>
                         <td class='align-middle'><a href = "produtosCRUD.php?oper=e&id=<?php echo $product->idProduct;?>" onclick = 
-                        " return confirm('Deseja excluir esta Produto?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
+                        " return confirm('Deseja excluir este Produto?')"><i class="fas fa-times fa-1x text-danger"></i></a></td></tr>
 
                 <?php
 

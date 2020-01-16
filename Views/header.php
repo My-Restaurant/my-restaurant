@@ -40,6 +40,9 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
+                            <a class="nav-link" href="principal.php">Inicio</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="anotarPedido.php">Anotar pedido</a>
                         </li>
                         <li class="nav-item">

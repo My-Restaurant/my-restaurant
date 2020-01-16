@@ -31,7 +31,7 @@
                 };
 
             ?>
-            <input type="submit" class="btn btn-primary" value="Adicionar">
+            <input type="submit" class="btn btn-danger" value="Adicionar">
         </form>
     </div>
 

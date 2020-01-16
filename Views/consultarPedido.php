@@ -29,7 +29,7 @@
                         if($value->idStatus == 1){
                             echo "<span class='badge badge-warning mt-3 p-2'>Aberto</span>";
                         } else {
-                            echo "<span class='badge badge-success'>Finalizado</span>";
+                            echo "<span class='badge badge-success mt-3 p-2'>Finalizado</span>";
                         }
                             
                         echo "</a></div>";

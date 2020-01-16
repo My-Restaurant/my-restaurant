@@ -30,6 +30,15 @@ class ProductDAO{
         c.descriptive 'cDescriptive'  FROM tb_products p INNER JOIN tb_categories c using(idCategory)
         WHERE idProduct = :id", [":id" => $prod->getIdProduct()]);
         $sql->close();
+        return $result;
+    }
+    
+    public function oneProduct2($prod){
+        $sql = new Sql();
+        $result = $sql->select("SELECT idProduct, p.descriptive 'pDescriptive', price, idCategory, 
+        c.descriptive 'cDescriptive'  FROM tb_products p INNER JOIN tb_categories c using(idCategory)
+        WHERE idProduct = :id", [":id" => $prod->getIdProduct()]);
+        $sql->close();
         return $result[0];
     }
 

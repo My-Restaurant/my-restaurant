@@ -18,7 +18,7 @@
                             foreach ($_SESSION["order"] as $key => $value) {
                                 $prod = new Product($value["id"]);
                                 $prodDAO = new ProductDAO();
-                                $ret = $prodDAO->oneProduct($prod);
+                                $ret = $prodDAO->oneProduct2($prod);
                         ?>
                             <p class="prod-desc" id="prod<?=$value["id"]?>"><?=$ret->pDescriptive?></p>
                         <?php

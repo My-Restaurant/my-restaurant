@@ -71,7 +71,7 @@
             try {
                 
                 $result = $sql->select("SELECT * FROM tb_orders
-                INNER JOIN tb_desk USING(idDesk)");
+                INNER JOIN tb_desk USING(idDesk) ORDER BY dt_register DESC");
                 $sql->close();
                 return $result;
 
